@@ -3,11 +3,11 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowLeft, MapPin, TreePine, Wallet, Gift, BarChart3 } from "lucide-react"
-import { FarmSelection } from "@/components/farm-selection"
-import { WalletConnection } from "@/components/wallet-connection"
-import { TreeAdoption } from "@/components/tree-adoption"
-import { NFTPreview } from "@/components/nft-preview"
-import { ImpactDashboard } from "@/components/impact-dashboard"
+import { FarmSelection } from "@/components/adoption-flow/farm-selection"
+import { WalletConnection } from "@/components/adoption-flow/wallet-connection"
+import { TreeAdoption } from "@/components/adoption-flow/tree-adoption"
+import { NFTPreview } from "@/components/adoption-flow/nft-preview"
+import { ImpactDashboard } from "@/components/adoption-flow/impact-dashboard"
 
 const steps = [
   { id: 1, title: "Select", icon: MapPin, description: "Explore farms and choose your tree" },

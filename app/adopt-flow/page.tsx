@@ -1,4 +1,4 @@
-import { AdoptionFlow } from "@/components/adoption-flow"
+import { AdoptionFlow } from "@/components/adoption-flow/adoption-flow"
 
 export default function AdoptPage() {
   return (

@@ -43,7 +43,7 @@ export function HeroSection() {
               className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 text-base sm:text-lg rounded-xl w-full sm:w-auto transition-all duration-300 hover:scale-105 shadow-2xl"
               asChild
             >
-              <a href="/adopt">
+              <a href="/adopt-flow">
                 Adopt your tree
                 <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </a>
