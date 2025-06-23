@@ -50,30 +50,26 @@ export default function RegisterForm() {
 
           <div className="space-y-6">
             {!googleStep && (
-              <>
-                {/* Email input */}
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="text-sm font-medium text-gray-700">
-                    Email Address
-                  </Label>
-                  <div className="relative">
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="you@example.com"
-                      value={email}
-                      onChange={(e) => handleEmailChange(e.target.value)}
-                      className="h-12 px-4 border-2 border-emerald-200 focus:border-emerald-400 focus:ring-emerald-400 rounded-xl transition-all duration-300 bg-white/50"
-                    />
-                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                      <Sprout className="w-5 h-5 text-emerald-400" />
-                    </div>
+              <div className="space-y-2">
+                <Label htmlFor="email" className="text-sm font-medium text-gray-700">
+                  Email Address
+                </Label>
+                <div className="relative">
+                  <Input
+                    id="email"
+                    type="email"
+                    placeholder="you@example.com"
+                    value={email}
+                    onChange={(e) => handleEmailChange(e.target.value)}
+                    className="h-12 px-4 border-2 border-emerald-200 focus:border-emerald-400 focus:ring-emerald-400 rounded-xl transition-all duration-300 bg-white/50"
+                  />
+                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                    <Sprout className="w-5 h-5 text-emerald-400" />
                   </div>
                 </div>
-              </>
+              </div>
             )}
 
-            {/* Passphrase field */}
             {(googleStep || email) && (
               <div className="space-y-2">
                 <Label htmlFor="passphrase" className="text-sm font-medium text-gray-700">
@@ -100,24 +96,22 @@ export default function RegisterForm() {
 
             {error && <p className="text-sm text-red-600 font-medium text-center">{error}</p>}
 
-            {(googleStep || !googleStep) && (
-              <Button
-                onClick={handleEmailSubmit}
-                disabled={loading}
-                className="w-full h-12 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg"
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-              >
-                {loading ? (
-                  'Creating Wallet...'
-                ) : (
-                  <span className="flex items-center justify-center gap-2">
-                    {googleStep ? 'Finish with Google' : 'Continue Growing'}
-                    <Sprout className={`w-4 h-4 transition-transform duration-300 ${isHovered ? 'scale-110' : ''}`} />
-                  </span>
-                )}
-              </Button>
-            )}
+            <Button
+              onClick={handleEmailSubmit}
+              disabled={loading}
+              className="w-full h-12 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              {loading ? (
+                'Creating Wallet...'
+              ) : (
+                <span className="flex items-center justify-center gap-2">
+                  {googleStep ? 'Finish with Google' : 'Continue Growing'}
+                  <Sprout className={`w-4 h-4 transition-transform duration-300 ${isHovered ? 'scale-110' : ''}`} />
+                </span>
+              )}
+            </Button>
 
             {!googleStep && (
               <>
@@ -149,6 +143,13 @@ export default function RegisterForm() {
                 Privacy Policy
               </a>
             </p>
+
+            <a
+              href="/recover"
+              className="inline-block text-sm text-emerald-600 hover:text-emerald-700 font-medium underline transition-all"
+            >
+              Already have a wallet? Recover it here
+            </a>
           </div>
         </div>
       </div>
