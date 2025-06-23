@@ -2,7 +2,7 @@
 
 import { ReactNode } from 'react'
 import { usePathname } from 'next/navigation'
-import { MainNavigation } from '@/components/main-navigation'
+import { MainNavigation } from '@/components/layout/main-navigation'
 
 export const LayoutWrapper = ({ children }: { children: ReactNode }) => {
   const pathname = usePathname()
