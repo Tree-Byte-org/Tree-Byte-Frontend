@@ -9,7 +9,7 @@ type ToastContextType = {
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
 
-// 👉 Hook para consumir en componentes si se desea
+
 export const useToast = (): ToastContextType => {
   const context = useContext(ToastContext);
   if (!context) {
@@ -18,7 +18,7 @@ export const useToast = (): ToastContextType => {
   return context;
 };
 
-// 🔥 Exportamos esta función directamente para usar: `toast({...})`
+
 let externalToast: (props: Toast) => void = () => {
   throw new Error("toast() called outside of ToastProvider");
 };
