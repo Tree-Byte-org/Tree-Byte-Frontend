@@ -1,9 +1,9 @@
-export const buyToken = async (projectId: number, userId: number, amount: number) => {
+export const buyToken = async (projectId: string, userId: string, amount: number) => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/token/buy-token`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      project_id: projectId,
+      project_id: projectId, 
       user_id: userId,
       amount,
     }),
