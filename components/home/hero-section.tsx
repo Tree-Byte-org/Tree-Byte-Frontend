@@ -1,9 +1,12 @@
-import { Button } from "@/components/ui/button"
-import { ArrowRight, Play, TreePine, MapPin, Leaf } from "lucide-react"
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Play, TreePine, MapPin, Leaf } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -27,13 +30,15 @@ export function HeroSection() {
           {/* Main heading */}
           <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-tight opacity-0 animate-[fade-in_1s_ease-out_0.3s_forwards]">
             Transform your digital footprint into{" "}
-            <span className="text-green-300 animate-text-pulse block sm:inline">real trees</span>
+            <span className="text-green-300 animate-text-pulse block sm:inline">
+              real trees
+            </span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-12 text-green-100 max-w-4xl mx-auto leading-relaxed opacity-0 animate-[fade-in_1s_ease-out_0.6s_forwards]">
-            With Tree Byte, every click counts. Adopt a tree, get a unique NFT, and visit your impact on a real farm in
-            Costa Rica.
+            With TreeByte, every click counts. Adopt a tree, get a unique NFT,
+            and visit your impact on a real farm in Costa Rica.
           </p>
 
           {/* CTA Buttons - Fixed to be horizontal on desktop */}
@@ -65,7 +70,9 @@ export function HeroSection() {
                 <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-400/20 rounded-full mx-auto mb-3 sm:mb-4 flex items-center justify-center">
                   <TreePine className="h-6 w-6 sm:h-8 sm:w-8 text-green-300" />
                 </div>
-                <h3 className="text-lg sm:text-xl font-semibold mb-2 text-green-200">Real Trees</h3>
+                <h3 className="text-lg sm:text-xl font-semibold mb-2 text-green-200">
+                  Real Trees
+                </h3>
                 <p className="text-green-100 text-sm leading-relaxed">
                   Every NFT represents an actual tree planted in Costa Rica
                 </p>
@@ -75,7 +82,9 @@ export function HeroSection() {
                 <div className="w-12 h-12 sm:w-16 sm:h-16 bg-emerald-400/20 rounded-full mx-auto mb-3 sm:mb-4 flex items-center justify-center">
                   <MapPin className="h-6 w-6 sm:h-8 sm:w-8 text-emerald-300" />
                 </div>
-                <h3 className="text-lg sm:text-xl font-semibold mb-2 text-emerald-200">GPS Verified</h3>
+                <h3 className="text-lg sm:text-xl font-semibold mb-2 text-emerald-200">
+                  GPS Verified
+                </h3>
                 <p className="text-green-100 text-sm leading-relaxed">
                   Track your tree's exact location and growth progress
                 </p>
@@ -85,7 +94,9 @@ export function HeroSection() {
                 <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-400/20 rounded-full mx-auto mb-3 sm:mb-4 flex items-center justify-center">
                   <Leaf className="h-6 w-6 sm:h-8 sm:w-8 text-green-300" />
                 </div>
-                <h3 className="text-lg sm:text-xl font-semibold mb-2 text-green-200">Visit & Experience</h3>
+                <h3 className="text-lg sm:text-xl font-semibold mb-2 text-green-200">
+                  Visit & Experience
+                </h3>
                 <p className="text-green-100 text-sm leading-relaxed">
                   Plan regenerative trips to see your trees in person
                 </p>
@@ -97,21 +108,33 @@ export function HeroSection() {
           <div className="mt-12 sm:mt-16 opacity-0 animate-[fade-in_1s_ease-out_1.5s_forwards]">
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4 text-center">
               <div className="bg-white/5 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/10 w-full sm:w-auto">
-                <div className="text-2xl sm:text-3xl font-bold text-green-300">1,250+</div>
-                <div className="text-green-100 text-xs sm:text-sm">Trees Available</div>
+                <div className="text-2xl sm:text-3xl font-bold text-green-300">
+                  1,250+
+                </div>
+                <div className="text-green-100 text-xs sm:text-sm">
+                  Trees Available
+                </div>
               </div>
               <div className="bg-white/5 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/10 w-full sm:w-auto">
-                <div className="text-2xl sm:text-3xl font-bold text-emerald-300">3</div>
-                <div className="text-green-100 text-xs sm:text-sm">Active Farms</div>
+                <div className="text-2xl sm:text-3xl font-bold text-emerald-300">
+                  3
+                </div>
+                <div className="text-green-100 text-xs sm:text-sm">
+                  Active Farms
+                </div>
               </div>
               <div className="bg-white/5 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/10 w-full sm:w-auto">
-                <div className="text-2xl sm:text-3xl font-bold text-green-300">🇨🇷</div>
-                <div className="text-green-100 text-xs sm:text-sm">Costa Rica</div>
+                <div className="text-2xl sm:text-3xl font-bold text-green-300">
+                  🇨🇷
+                </div>
+                <div className="text-green-100 text-xs sm:text-sm">
+                  Costa Rica
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

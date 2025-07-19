@@ -1,6 +1,6 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { MapPin, TreePine, Users, Camera } from "lucide-react"
-import { AnimatedSection } from "@/components/animated-section"
+import { Card, CardContent } from "@/components/ui/card";
+import { MapPin, TreePine, Users, Camera } from "lucide-react";
+import { AnimatedSection } from "@/components/animated-section";
 
 export function InteractiveMap() {
   const farms = [
@@ -28,7 +28,7 @@ export function InteractiveMap() {
       availability: "Coming soon",
       coordinates: { x: 45, y: 70 },
     },
-  ]
+  ];
 
   return (
     <AnimatedSection id="farms" className="py-20 bg-white">
@@ -36,9 +36,12 @@ export function InteractiveMap() {
         <div className="max-w-6xl mx-auto">
           <AnimatedSection animation="fade-up">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Active farms in Costa Rica</h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Active farms in Costa Rica
+              </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Explore the locations where you can adopt trees and experience regenerative activities
+                Explore the locations where you can adopt trees and experience
+                regenerative activities
               </p>
             </div>
           </AnimatedSection>
@@ -54,10 +57,12 @@ export function InteractiveMap() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 <div className="absolute bottom-6 left-6 text-white">
-                  <h3 className="text-2xl font-bold mb-2">Costa Rica's Forests</h3>
+                  <h3 className="text-2xl font-bold mb-2">
+                    Costa Rica's Forests
+                  </h3>
                   <p className="text-green-200 flex items-center">
                     <Camera className="h-4 w-4 mr-2" />
-                    Where your Tree Byte trees are born
+                    Where your TreeByte trees are born
                   </p>
                 </div>
               </div>
@@ -81,8 +86,10 @@ export function InteractiveMap() {
                   </div>
 
                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-3">
-                    <h4 className="font-semibold text-sm text-gray-800">Interactive Map</h4>
-                    <p className="text-xs text-gray-600">Tree Byte Farms</p>
+                    <h4 className="font-semibold text-sm text-gray-800">
+                      Interactive Map
+                    </h4>
+                    <p className="text-xs text-gray-600">TreeByte Farms</p>
                   </div>
 
                   {farms.map((farm, index) => (
@@ -98,7 +105,9 @@ export function InteractiveMap() {
                       <div className="w-4 h-4 bg-green-500 rounded-full animate-pulse group-hover:scale-150 transition-transform"></div>
                       <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-white rounded-lg shadow-lg p-3 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
                         <p className="font-semibold text-sm">{farm.name}</p>
-                        <p className="text-xs text-gray-600">{farm.trees} trees</p>
+                        <p className="text-xs text-gray-600">
+                          {farm.trees} trees
+                        </p>
                       </div>
                     </div>
                   ))}
@@ -110,7 +119,10 @@ export function InteractiveMap() {
             <AnimatedSection animation="slide-in-right" delay={600}>
               <div className="space-y-6">
                 {farms.map((farm, index) => (
-                  <Card key={index} className="border-green-200 hover:shadow-lg transition-shadow">
+                  <Card
+                    key={index}
+                    className="border-green-200 hover:shadow-lg transition-shadow"
+                  >
                     <CardContent className="p-6">
                       <div className="flex items-start justify-between mb-4">
                         <div>
@@ -134,17 +146,24 @@ export function InteractiveMap() {
                       <div className="grid grid-cols-2 gap-4 mb-4">
                         <div className="flex items-center">
                           <TreePine className="h-4 w-4 text-green-600 mr-2" />
-                          <span className="text-sm text-gray-600">{farm.trees} trees</span>
+                          <span className="text-sm text-gray-600">
+                            {farm.trees} trees
+                          </span>
                         </div>
                         <div className="flex items-center">
                           <Users className="h-4 w-4 text-green-600 mr-2" />
-                          <span className="text-sm text-gray-600">{farm.activities.length} activities</span>
+                          <span className="text-sm text-gray-600">
+                            {farm.activities.length} activities
+                          </span>
                         </div>
                       </div>
 
                       <div className="flex flex-wrap gap-2">
                         {farm.activities.map((activity, actIndex) => (
-                          <span key={actIndex} className="px-2 py-1 bg-green-50 text-green-700 rounded text-xs">
+                          <span
+                            key={actIndex}
+                            className="px-2 py-1 bg-green-50 text-green-700 rounded text-xs"
+                          >
                             {activity}
                           </span>
                         ))}
@@ -158,5 +177,5 @@ export function InteractiveMap() {
         </div>
       </div>
     </AnimatedSection>
-  )
+  );
 }

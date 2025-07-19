@@ -1,7 +1,7 @@
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Twitter, MessageCircle, Instagram, Mail } from "lucide-react"
-import { AnimatedSection } from "@/components/animated-section"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Twitter, MessageCircle, Instagram, Mail } from "lucide-react";
+import { AnimatedSection } from "@/components/animated-section";
 
 export function Footer() {
   return (
@@ -10,16 +10,24 @@ export function Footer() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
             {/* Brand */}
-            <AnimatedSection animation="fade-up" delay={100} className="col-span-1 md:col-span-2">
-              <h3 className="text-2xl font-bold mb-4 text-green-400">Tree Byte</h3>
+            <AnimatedSection
+              animation="fade-up"
+              delay={100}
+              className="col-span-1 md:col-span-2"
+            >
+              <h3 className="text-2xl font-bold mb-4 text-green-400">
+                TreeByte
+              </h3>
               <p className="text-gray-300 mb-6 max-w-md">
-                Transforming digital footprint into real environmental impact through NFTs and regenerative experiences
-                in Costa Rica.
+                Transforming digital footprint into real environmental impact
+                through NFTs and regenerative experiences in Costa Rica.
               </p>
 
               {/* Newsletter */}
               <div className="mb-6">
-                <h4 className="font-semibold mb-3">Get green news and special tokens</h4>
+                <h4 className="font-semibold mb-3">
+                  Get green news and special tokens
+                </h4>
                 <div className="flex space-x-2">
                   <Input
                     placeholder="Your email"
@@ -37,27 +45,42 @@ export function Footer() {
               <h4 className="font-semibold mb-4">Navigation</h4>
               <ul className="space-y-2 text-gray-300">
                 <li>
-                  <a href="#" className="hover:text-green-400 transition-colors">
+                  <a
+                    href="#"
+                    className="hover:text-green-400 transition-colors"
+                  >
                     About us
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-green-400 transition-colors">
+                  <a
+                    href="#"
+                    className="hover:text-green-400 transition-colors"
+                  >
                     How it works
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-green-400 transition-colors">
+                  <a
+                    href="#"
+                    className="hover:text-green-400 transition-colors"
+                  >
                     Whitepaper
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-green-400 transition-colors">
+                  <a
+                    href="#"
+                    className="hover:text-green-400 transition-colors"
+                  >
                     FAQ
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-green-400 transition-colors">
+                  <a
+                    href="#"
+                    className="hover:text-green-400 transition-colors"
+                  >
                     Contact
                   </a>
                 </li>
@@ -101,7 +124,9 @@ export function Footer() {
 
           {/* Bottom */}
           <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm mb-4 md:mb-0">© 2024 Tree Byte. All rights reserved.</p>
+            <p className="text-gray-400 text-sm mb-4 md:mb-0">
+              © 2024 TreeByte. All rights reserved.
+            </p>
             <div className="flex space-x-6 text-sm text-gray-400">
               <a href="#" className="hover:text-green-400 transition-colors">
                 Terms of use
@@ -117,5 +142,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

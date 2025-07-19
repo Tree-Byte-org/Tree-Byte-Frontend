@@ -1,6 +1,6 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { TreePine, Award, Plane, Users } from "lucide-react"
-import { AnimatedSection } from "@/components/animated-section"
+import { Card, CardContent } from "@/components/ui/card";
+import { TreePine, Award, Plane, Users } from "lucide-react";
+import { AnimatedSection } from "@/components/animated-section";
 
 export function HowItWorks() {
   const steps = [
@@ -19,26 +19,34 @@ export function HowItWorks() {
     {
       icon: Plane,
       title: "Visit your tree",
-      description: "Plan your regenerative trip, stay at a farm and plant directly.",
+      description:
+        "Plan your regenerative trip, stay at a farm and plant directly.",
       color: "bg-green-600",
     },
     {
       icon: Users,
       title: "Tracking and community",
-      description: "Your NFT evolves with each visit. Receive updates, levels and benefits.",
+      description:
+        "Your NFT evolves with each visit. Receive updates, levels and benefits.",
       color: "bg-emerald-600",
     },
-  ]
+  ];
 
   return (
-    <AnimatedSection id="how-it-works" className="py-20 bg-gradient-to-b from-green-50 to-white">
+    <AnimatedSection
+      id="how-it-works"
+      className="py-20 bg-gradient-to-b from-green-50 to-white"
+    >
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <AnimatedSection animation="fade-up">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">How it works</h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                How it works
+              </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                A simple and transparent process that connects your digital action with real environmental impact
+                A simple and transparent process that connects your digital
+                action with real environmental impact
               </p>
             </div>
           </AnimatedSection>
@@ -46,7 +54,11 @@ export function HowItWorks() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {steps.map((step, index) => (
-                <AnimatedSection key={index} animation="fade-up" delay={200 * index}>
+                <AnimatedSection
+                  key={index}
+                  animation="fade-up"
+                  delay={200 * index}
+                >
                   <Card className="relative border-green-200 hover:shadow-xl transition-all duration-300 group">
                     <CardContent className="p-6 text-center">
                       <div className="relative mb-4">
@@ -59,8 +71,12 @@ export function HowItWorks() {
                           {index + 1}
                         </div>
                       </div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-3">{step.title}</h3>
-                      <p className="text-gray-600 text-sm leading-relaxed">{step.description}</p>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-3">
+                        {step.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        {step.description}
+                      </p>
                     </CardContent>
                   </Card>
                 </AnimatedSection>
@@ -69,11 +85,13 @@ export function HowItWorks() {
 
             <AnimatedSection animation="slide-in-right" delay={400}>
               <div className="text-center">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">Your Tree Byte NFT</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">
+                  Your TreeByte NFT
+                </h3>
                 <div className="relative inline-block">
                   <img
                     src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%2018%20may%202025%2C%2008_57_44%20a.m.-iQiCUlagUoq0xz0w18ULBvAYU8wYYo.png"
-                    alt="Tree Byte NFT Example - Guanacaste"
+                    alt="TreeByte NFT Example - Guanacaste"
                     className="w-full max-w-sm mx-auto rounded-lg shadow-2xl"
                   />
                   <div className="absolute -bottom-4 -right-4 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
@@ -81,8 +99,8 @@ export function HowItWorks() {
                   </div>
                 </div>
                 <p className="text-gray-600 mt-6 max-w-md mx-auto">
-                  Each NFT contains verifiable data from your tree: GPS location, species, CO₂ captured and updated
-                  photos.
+                  Each NFT contains verifiable data from your tree: GPS
+                  location, species, CO₂ captured and updated photos.
                 </p>
               </div>
             </AnimatedSection>
@@ -90,5 +108,5 @@ export function HowItWorks() {
         </div>
       </div>
     </AnimatedSection>
-  )
+  );
 }

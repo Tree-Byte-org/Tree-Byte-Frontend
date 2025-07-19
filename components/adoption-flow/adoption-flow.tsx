@@ -1,56 +1,106 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { ArrowLeft, MapPin, TreePine, Wallet, Gift, BarChart3 } from "lucide-react"
-import { FarmSelection } from "@/components/adoption-flow/farm-selection"
-import { WalletConnection } from "@/components/adoption-flow/wallet-connection"
-import { TreeAdoption } from "@/components/adoption-flow/tree-adoption"
-import { NFTPreview } from "@/components/adoption-flow/nft-preview"
-import { ImpactDashboard } from "@/components/adoption-flow/impact-dashboard"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  ArrowLeft,
+  MapPin,
+  TreePine,
+  Wallet,
+  Gift,
+  BarChart3,
+} from "lucide-react";
+import { FarmSelection } from "@/components/adoption-flow/farm-selection";
+import { WalletConnection } from "@/components/adoption-flow/wallet-connection";
+import { TreeAdoption } from "@/components/adoption-flow/tree-adoption";
+import { NFTPreview } from "@/components/adoption-flow/nft-preview";
+import { ImpactDashboard } from "@/components/adoption-flow/impact-dashboard";
 
 const steps = [
-  { id: 1, title: "Select", icon: MapPin, description: "Explore farms and choose your tree" },
-  { id: 2, title: "Connect your wallet", icon: Wallet, description: "Link your Stellar wallet" },
-  { id: 3, title: "Adopt your tree", icon: TreePine, description: "Complete the adoption" },
-  { id: 4, title: "Receive your NFT", icon: Gift, description: "Get your digital certificate" },
-  { id: 5, title: "Track your impact", icon: BarChart3, description: "Monitor your forest" },
-]
+  {
+    id: 1,
+    title: "Select",
+    icon: MapPin,
+    description: "Explore farms and choose your tree",
+  },
+  {
+    id: 2,
+    title: "Connect your wallet",
+    icon: Wallet,
+    description: "Link your Stellar wallet",
+  },
+  {
+    id: 3,
+    title: "Adopt your tree",
+    icon: TreePine,
+    description: "Complete the adoption",
+  },
+  {
+    id: 4,
+    title: "Receive your NFT",
+    icon: Gift,
+    description: "Get your digital certificate",
+  },
+  {
+    id: 5,
+    title: "Track your impact",
+    icon: BarChart3,
+    description: "Monitor your forest",
+  },
+];
 
 export function AdoptionFlow() {
-  const [currentStep, setCurrentStep] = useState(1)
-  const [selectedFarm, setSelectedFarm] = useState(null)
-  const [walletConnected, setWalletConnected] = useState(false)
-  const [adoptionComplete, setAdoptionComplete] = useState(false)
+  const [currentStep, setCurrentStep] = useState(1);
+  const [selectedFarm, setSelectedFarm] = useState(null);
+  const [walletConnected, setWalletConnected] = useState(false);
+  const [adoptionComplete, setAdoptionComplete] = useState(false);
 
   const nextStep = () => {
     if (currentStep < steps.length) {
-      setCurrentStep(currentStep + 1)
+      setCurrentStep(currentStep + 1);
     }
-  }
+  };
 
   const prevStep = () => {
     if (currentStep > 1) {
-      setCurrentStep(currentStep - 1)
+      setCurrentStep(currentStep - 1);
     }
-  }
+  };
 
   const renderStepContent = () => {
     switch (currentStep) {
       case 1:
-        return <FarmSelection onSelectFarm={setSelectedFarm} selectedFarm={selectedFarm} onNext={nextStep} />
+        return (
+          <FarmSelection
+            onSelectFarm={setSelectedFarm}
+            selectedFarm={selectedFarm}
+            onNext={nextStep}
+          />
+        );
       case 2:
-        return <WalletConnection onConnect={setWalletConnected} isConnected={walletConnected} onNext={nextStep} />
+        return (
+          <WalletConnection
+            onConnect={setWalletConnected}
+            isConnected={walletConnected}
+            onNext={nextStep}
+          />
+        );
       case 3:
-        return <TreeAdoption farm={selectedFarm} onComplete={setAdoptionComplete} onNext={nextStep} />
+        return (
+          <TreeAdoption
+            farm={selectedFarm}
+            onComplete={setAdoptionComplete}
+            onNext={nextStep}
+          />
+        );
       case 4:
-        return <NFTPreview farm={selectedFarm} onNext={nextStep} />
+        return <NFTPreview farm={selectedFarm} onNext={nextStep} />;
       case 5:
-        return <ImpactDashboard farm={selectedFarm} />
+        return <ImpactDashboard farm={selectedFarm} />;
       default:
-        return null
+        return null;
     }
-  }
+  };
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -62,9 +112,12 @@ export function AdoptionFlow() {
             Back to home
           </a>
         </Button>
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">🌳 How to adopt your tree on Tree Byte?</h1>
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          🌳 How to adopt your tree on TreeByte?
+        </h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Adopting a tree and becoming part of the regenerative movement is very easy. Here's how to do it step by step:
+          Adopting a tree and becoming part of the regenerative movement is very
+          easy. Here's how to do it step by step:
         </p>
       </div>
 
@@ -95,7 +148,11 @@ export function AdoptionFlow() {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mt-4">
           {steps.map((step) => (
             <div key={step.id} className="text-center">
-              <h3 className={`font-semibold ${currentStep >= step.id ? "text-green-600" : "text-gray-400"}`}>
+              <h3
+                className={`font-semibold ${
+                  currentStep >= step.id ? "text-green-600" : "text-gray-400"
+                }`}
+              >
                 {step.title}
               </h3>
               <p className="text-sm text-gray-500 mt-1">{step.description}</p>
@@ -118,5 +175,5 @@ export function AdoptionFlow() {
         </div>
       )}
     </div>
-  )
+  );
 }
