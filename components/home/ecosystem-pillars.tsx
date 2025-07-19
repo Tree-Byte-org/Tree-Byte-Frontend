@@ -1,4 +1,4 @@
-import { AnimatedSection } from "@/components/animated-section"
+import { AnimatedSection } from "@/components/animated-section";
 
 export function EcosystemPillars() {
   return (
@@ -8,10 +8,11 @@ export function EcosystemPillars() {
           <AnimatedSection animation="fade-up">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                The 4 pillars of the Tree Byte ecosystem
+                The 4 pillars of the TreeByte ecosystem
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                A complete ecosystem that connects technology, conservation and real experiences
+                A complete ecosystem that connects technology, conservation and
+                real experiences
               </p>
             </div>
           </AnimatedSection>
@@ -32,7 +33,8 @@ export function EcosystemPillars() {
                     NFT WITH REAL TREE
                   </h3>
                   <p className="text-base md:text-lg opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-200 max-w-md">
-                    Adopt trees represented by unique, traceable and living NFTs on blockchain.
+                    Adopt trees represented by unique, traceable and living NFTs
+                    on blockchain.
                   </p>
                 </div>
               </div>
@@ -50,7 +52,8 @@ export function EcosystemPillars() {
                     CONSERVATION TOKENIZATION
                   </h3>
                   <p className="text-sm md:text-base opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-200">
-                    Farms can tokenize existing trees, divide land or sell regenerative activities.
+                    Farms can tokenize existing trees, divide land or sell
+                    regenerative activities.
                   </p>
                 </div>
               </div>
@@ -89,7 +92,8 @@ export function EcosystemPillars() {
                     GREEN LOYALTY
                   </h3>
                   <p className="text-sm md:text-base opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-200">
-                    Accumulate green points with purchases, exchange them for trees, discounts or experience NFTs.
+                    Accumulate green points with purchases, exchange them for
+                    trees, discounts or experience NFTs.
                   </p>
                 </div>
               </div>
@@ -100,7 +104,8 @@ export function EcosystemPillars() {
           <AnimatedSection animation="fade-up" delay={600}>
             <div className="text-center mt-16">
               <p className="text-lg text-gray-600 mb-8">
-                Each pillar works together to create a comprehensive platform for environmental impact
+                Each pillar works together to create a comprehensive platform
+                for environmental impact
               </p>
               <button className="px-8 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-colors duration-300">
                 Explore our ecosystem
@@ -110,5 +115,5 @@ export function EcosystemPillars() {
         </div>
       </div>
     </AnimatedSection>
-  )
+  );
 }

@@ -1,13 +1,21 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Gift, Download, Share2, ArrowRight, MapPin, Calendar, Leaf } from "lucide-react"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  Gift,
+  Download,
+  Share2,
+  ArrowRight,
+  MapPin,
+  Calendar,
+  Leaf,
+} from "lucide-react";
 
 interface NFTPreviewProps {
-  farm: any
-  onNext: () => void
+  farm: any;
+  onNext: () => void;
 }
 
 export function NFTPreview({ farm, onNext }: NFTPreviewProps) {
@@ -20,15 +28,18 @@ export function NFTPreview({ farm, onNext }: NFTPreviewProps) {
     estimatedGrowth: "23.4 tons in 20 years",
     farmName: farm?.name || "Verde Turrialba Farm",
     owner: farm?.owner || "Don Carlos Méndez",
-  }
+  };
 
   return (
     <div>
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">🎁 4. Receive your NFT</h2>
+        <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          🎁 4. Receive your NFT
+        </h2>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-          Once the adoption is confirmed, you will receive a unique NFT that represents your tree: includes species, GPS
-          location, planting date, photo and estimated CO₂ captured.
+          Once the adoption is confirmed, you will receive a unique NFT that
+          represents your tree: includes species, GPS location, planting date,
+          photo and estimated CO₂ captured.
         </p>
       </div>
 
@@ -38,7 +49,7 @@ export function NFTPreview({ farm, onNext }: NFTPreviewProps) {
           <div className="relative inline-block">
             <img
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%2018%20may%202025%2C%2008_57_44%20a.m.-iQiCUlagUoq0xz0w18ULBvAYU8wYYo.png"
-              alt="Your Tree Byte NFT - Guanacaste"
+              alt="Your TreeByte NFT - Guanacaste"
               className="w-full max-w-md mx-auto rounded-lg shadow-2xl"
             />
             <div className="absolute -top-4 -right-4 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold animate-bounce">
@@ -50,7 +61,9 @@ export function NFTPreview({ farm, onNext }: NFTPreviewProps) {
               {nftData.tokenId}
             </Badge>
             <p className="text-gray-600">Your unique digital certificate</p>
-            <Badge className="bg-yellow-100 text-yellow-800">🇨🇷 National Tree of Costa Rica</Badge>
+            <Badge className="bg-yellow-100 text-yellow-800">
+              🇨🇷 National Tree of Costa Rica
+            </Badge>
           </div>
         </div>
 
@@ -97,8 +110,12 @@ export function NFTPreview({ farm, onNext }: NFTPreviewProps) {
                   <Leaf className="h-4 w-4 text-green-600 mt-1" />
                   <div>
                     <p className="text-sm text-gray-600">CO₂ captured so far</p>
-                    <p className="font-semibold text-green-600">{nftData.co2Captured}</p>
-                    <p className="text-xs text-gray-500">Estimated: {nftData.estimatedGrowth}</p>
+                    <p className="font-semibold text-green-600">
+                      {nftData.co2Captured}
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      Estimated: {nftData.estimatedGrowth}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -107,7 +124,9 @@ export function NFTPreview({ farm, onNext }: NFTPreviewProps) {
 
           <Card className="border-blue-200 bg-blue-50">
             <CardContent className="p-6">
-              <h4 className="font-semibold text-blue-800 mb-3">🌟 Your NFT benefits:</h4>
+              <h4 className="font-semibold text-blue-800 mb-3">
+                🌟 Your NFT benefits:
+              </h4>
               <ul className="space-y-2 text-sm text-blue-700">
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
@@ -123,7 +142,7 @@ export function NFTPreview({ farm, onNext }: NFTPreviewProps) {
                 </li>
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                  Participation in Tree Byte community
+                  Participation in TreeByte community
                 </li>
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
@@ -144,12 +163,16 @@ export function NFTPreview({ farm, onNext }: NFTPreviewProps) {
             </Button>
           </div>
 
-          <Button size="lg" onClick={onNext} className="w-full bg-green-600 hover:bg-green-700">
+          <Button
+            size="lg"
+            onClick={onNext}
+            className="w-full bg-green-600 hover:bg-green-700"
+          >
             View my impact dashboard
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </div>
       </div>
     </div>
-  )
+  );
 }

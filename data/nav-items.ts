@@ -1,4 +1,4 @@
-import { TreePine, BookOpen, Leaf, MapPin, Globe, Users } from "lucide-react"
+import { TreePine, BookOpen, Leaf, MapPin, Globe, Users } from "lucide-react";
 
 export const navItems = [
   {
@@ -11,7 +11,7 @@ export const navItems = [
     href: "/#about",
     icon: BookOpen,
     children: [
-      { name: "What is Tree Byte", href: "/#what-is-tree-byte" },
+      { name: "What is TreeByte", href: "/#what-is-tree-byte" },
       { name: "How it works", href: "/#how-it-works" },
       { name: "Ecosystem pillars", href: "/#ecosystem-pillars" },
     ],
@@ -41,4 +41,4 @@ export const navItems = [
     href: "/#community",
     icon: Users,
   },
-]
+];
