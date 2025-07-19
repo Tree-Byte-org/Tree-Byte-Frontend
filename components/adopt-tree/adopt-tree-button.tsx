@@ -13,7 +13,7 @@ export default function AdoptTreeButton({ projectId }: { projectId: number }) {
       <AdoptTreeModal
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
-        projectId={projectId}
+       projectId={String(projectId)} 
       />
     </>
   );
