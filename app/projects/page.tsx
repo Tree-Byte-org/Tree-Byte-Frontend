@@ -1,12 +1,12 @@
-'use client'
+"use client";
 
-import * as React from "react"
-import { useProjects } from "@/hooks/projects/use-projects"
-import { ProjectGrid } from "@/components/projects/project-grid"
-import { AnimatedSection } from "@/components/animated-section"
+import * as React from "react";
+import { useProjects } from "@/hooks/projects/use-projects";
+import { ProjectGrid } from "@/components/projects/project-grid";
+import { AnimatedSection } from "@/components/animated-section";
 
 export default function ProjectsPage() {
-  const { projects, loading, error, refetch } = useProjects()
+  const { projects, loading, error, refetch } = useProjects();
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50 to-white py-20">
@@ -16,8 +16,9 @@ export default function ProjectsPage() {
             Reforestation Projects
           </h1>
           <p className="text-xl text-gray-600 mb-12 max-w-3xl">
-            Discover real-world environmental initiatives led by local farms. Browse through our
-            available reforestation projects and support the regeneration of our planet.
+            Discover real-world environmental initiatives led by local farms.
+            Browse through our available reforestation projects and support the
+            regeneration of our planet.
           </p>
         </AnimatedSection>
 
@@ -50,5 +51,5 @@ export default function ProjectsPage() {
         )}
       </div>
     </div>
-  )
+  );
 }
