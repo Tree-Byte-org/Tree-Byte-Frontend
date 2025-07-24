@@ -1,25 +1,21 @@
-import { HeroSection } from "@/components/home/hero-section"
-import { WhatIsTreeByte } from "@/components/home/what-is-tree-byte"
-import { HowItWorks } from "@/components/home/how-it-works"
-import { EcosystemPillars } from "@/components/home/ecosystem-pillars"
-import { UserBenefits } from "@/components/home/user-benefits"
-import { InteractiveMap } from "@/components/home/interactive-map"
-import { Roadmap } from "@/components/home/roadmap"
-import { Testimonials } from "@/components/home/testimonials"
-import { Footer } from "@/components/home/footer"
+import { AboutSection } from "@/components/home/about-section";
+import { FarmsSection } from "@/components/home/farms-section";
+import { FooterSection } from "@/components/home/footer-section";
+import { HeroSection } from "@/components/home/hero-section";
+import { HowItWorksSection } from "@/components/home/how-it-works-section";
+import { NftSection } from "@/components/home/nft-section";
+import { ProjectsSection } from "@/components/home/projects-section";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       <HeroSection />
-      <WhatIsTreeByte />
-      <HowItWorks />
-      <EcosystemPillars />
-      <UserBenefits />
-      <InteractiveMap />
-      <Roadmap />
-      <Testimonials />
-      <Footer />
+      <AboutSection />
+      <ProjectsSection />
+      <HowItWorksSection />
+      <NftSection />
+      <FarmsSection />
+      <FooterSection />
     </div>
-  )
+  );
 }
