@@ -9,7 +9,7 @@ export default function ProjectsPage() {
   const { projects, loading, error, refetch } = useProjects();
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white py-20">
+    <div className="min-h-screen py-20">
       <div className="container mx-auto px-4 max-w-6xl">
         <AnimatedSection animation="fade-up">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
