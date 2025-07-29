@@ -53,7 +53,7 @@ export default function ProjectMapSection() {
                 <TentTree className="w-4 h-4" />
                 Activities:
               </p>
-              <ul className="flex flex-col gap-1 underline text-sm text-[#90f46f]">
+              <ul className="flex flex-col gap-1 underline text-sm text-white">
                 <li>
                   <a href="#">Planting</a>
                 </li>
