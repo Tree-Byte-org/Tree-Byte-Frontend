@@ -3,8 +3,9 @@ import { Instagram, MessageCircle, Twitter, Mail } from "lucide-react";
 
 export default function FooterProjects() {
   return (
-    <footer className="bg-[#0d0f0a] px-8 pt-16">
-      <div className="max-w-6xl mx-auto">
+    <footer className="bg-[#0d0f0a] pt-16">
+      {/* Main content */}
+      <div className="max-w-6xl mx-auto px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-y-14 gap-x-16 pb-16">
           {/* Left Section - Logo and Description */}
           <div className="space-y-8">
@@ -131,8 +132,7 @@ export default function FooterProjects() {
         </div>
       </div>
 
-      {/* Bottom Gray Bar */}
-      <div className="bg-[#1f1f1f] py-6 text-white text-sm flex flex-col md:flex-row items-center justify-between px-8">
+      <div className="w-full bg-[#1f1f1f] py-6 text-white text-sm flex flex-col md:flex-row items-center justify-between px-6 md:px-12">
         <p>© 2024 Tree Byte. All rights reserved.</p>
         <div className="flex gap-6 mt-4 md:mt-0">
           <a href="#" className="hover:underline">
