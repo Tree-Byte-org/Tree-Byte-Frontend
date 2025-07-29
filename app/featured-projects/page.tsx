@@ -1,5 +1,5 @@
-import ProjectMapSection from "@/components/map/map-component";
+import FeaturedSection from "@/components/featured-projects/featured-section";
 
 export default function Page() {
-  return <ProjectMapSection />;
+  return <FeaturedSection />;
 }

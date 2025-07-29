@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-[url('/map/background.jpg')] bg-cover bg-center text-gray-900">
+    <div className="min-h-screen overflow-x-hidden bg-[url('/featured-projects/background.png')] bg-cover bg-center text-gray-900">
       <HeaderFeatured />
       <main className="min-h-screen">{children}</main>
       <FooterFeatured />
