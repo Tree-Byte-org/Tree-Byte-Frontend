@@ -13,7 +13,8 @@ export const LayoutWrapper = ({ children }: { children: ReactNode }) => {
     pathname.startsWith('/dashboard') ||
     pathname.startsWith('/coupons') ||
     pathname.startsWith('/map') ||
-    pathname.startsWith('/projects')
+    pathname.startsWith('/projects') ||
+    pathname.startsWith('/featured-projects')
 
   return (
     <>
