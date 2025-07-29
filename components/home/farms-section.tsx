@@ -4,7 +4,7 @@ import { Locate, TentTree, Trees } from "lucide-react";
 
 export function FarmsSection() {
   return (
-    <section className="bg-white dark:bg-gray-900 my-20">
+    <section className="bg-white dark:bg-black">
       <Image
         src="/images/bg-section.png"
         alt="Farms"

@@ -1,6 +1,6 @@
 export default function ProjectsHeader() {
   return (
-    <section className="bg-black px-6 py-12 md:px-12 lg:px-16">
+    <section className="bg-black dark:bg-gray-900 px-6 py-12 md:px-12 lg:px-16">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
           <div className="md:col-span-1">

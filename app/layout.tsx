@@ -27,9 +27,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className={`overflow-x-hidden ${nunitoSans.className}`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
-          enableSystem={false}
-          forcedTheme="light"
+          defaultTheme="system"
+          enableSystem={true}
+          disableTransitionOnChange={false}
         >
           <LayoutWrapper>{children}</LayoutWrapper>
         </ThemeProvider>

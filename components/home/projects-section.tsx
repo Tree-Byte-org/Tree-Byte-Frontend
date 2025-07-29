@@ -37,13 +37,13 @@ export function ProjectsSection() {
   ];
 
   return (
-    <section className="py-20 dark:bg-gray-800">
+    <section className="py-20 bg-gray-50 dark:bg-black">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="text-center mb-12">
           <h2 className="text-5xl lg:text-6xl font-bold text-primary mb-4">
             Reforestation Projects
           </h2>
-          <p className="text-2xl">
+          <p className="text-2xl text-gray-700 dark:text-gray-300">
             Discover reforestation initiatives active in Costa Rica and select
             the one that inspires you the most. <br /> Transparent, agile, and
             traceable thanks to blockchain technology.

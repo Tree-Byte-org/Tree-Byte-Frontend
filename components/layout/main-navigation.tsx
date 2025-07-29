@@ -15,7 +15,9 @@ export function MainNavigation() {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        scrolled ? "bg-black/20 backdrop-blur-md shadow-lg" : "bg-transparent"
+        scrolled
+          ? "bg-white/5 dark:bg-black/90 backdrop-blur-md shadow-lg"
+          : "bg-transparent"
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
@@ -30,14 +32,18 @@ export function MainNavigation() {
             <X
               className={cn(
                 "h-6 w-6",
-                scrolled || pathname !== "/" ? "text-gray-900" : "text-white"
+                scrolled || pathname !== "/"
+                  ? "text-gray-900 dark:text-white"
+                  : "text-white"
               )}
             />
           ) : (
             <Menu
               className={cn(
                 "h-6 w-6",
-                scrolled || pathname !== "/" ? "text-gray-900" : "text-white"
+                scrolled || pathname !== "/"
+                  ? "text-gray-900 dark:text-white"
+                  : "text-white"
               )}
             />
           )}

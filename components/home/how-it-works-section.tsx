@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function HowItWorksSection() {
   return (
-    <section className="py-20 bg-white dark:bg-gray-900">
+    <section className="py-20 bg-gray-50 dark:bg-black">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="text-center mb-16">
           <div className="flex gap-4">
@@ -43,12 +43,12 @@ export function HowItWorksSection() {
                 height={60}
               />
 
-              <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">
+              <h3 className="text-3xl font-bold text-gray-900 mb-3">
                 Choose a project
               </h3>
             </div>
 
-            <p className="text-gray-600 dark:text-gray-300 text-sm">
+            <p className="text-gray-600  text-sm">
               Explore active reforestation initiatives in Costa Rica, select the
               one that inspires you the most, and discover the type of trees,
               location, and community behind the effort.
@@ -65,12 +65,12 @@ export function HowItWorksSection() {
                 height={60}
               />
 
-              <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">
+              <h3 className="text-3xl font-bold text-gray-900 mb-3">
                 Contribute
               </h3>
             </div>
 
-            <p className="text-gray-600 dark:text-gray-300 text-sm">
+            <p className="text-gray-600  text-sm">
               With a small token contribution, you can adopt trees in this
               project. The entire process is streamlined, transparent, and
               verifiable thanks to blockchain technology.
@@ -87,12 +87,12 @@ export function HowItWorksSection() {
                 height={60}
               />
 
-              <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">
+              <h3 className="text-3xl font-bold text-gray-900 mb-3">
                 Receive your NFT
               </h3>
             </div>
 
-            <p className="text-gray-600 dark:text-gray-300 text-sm">
+            <p className="text-gray-600  text-sm">
               Get a digital receipt of participation, track the progress of your
               trees, and access exclusive benefits within our regenerative
               tourism network.
@@ -109,12 +109,12 @@ export function HowItWorksSection() {
                 height={60}
               />
 
-              <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">
+              <h3 className="text-3xl font-bold text-gray-900 mb-3">
                 Tracking and community
               </h3>
             </div>
 
-            <p className="text-gray-600 dark:text-gray-300 text-sm">
+            <p className="text-gray-600  text-sm">
               Live the full experience by participating in in-person
               reforestation events or visiting partner regenerative farms.
             </p>

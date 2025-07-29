@@ -132,13 +132,13 @@ export default function ProjectCards() {
   };
 
   return (
-    <section className="bg-gray-50 px-6 py-16 md:px-12 lg:px-16">
+    <section className="bg-gray-50 dark:bg-gray-800 px-6 py-16 md:px-12 lg:px-16">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project) => (
             <Card
               key={project.id}
-              className="overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+              className="overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700"
               onClick={handleCardClick}
             >
               <div className="relative w-full">
@@ -154,22 +154,22 @@ export default function ProjectCards() {
               <CardContent className="p-4">
                 <div className="flex justify-between items-start mb-2">
                   <div>
-                    <h3 className="font-semibold text-black mb-1">
+                    <h3 className="font-semibold text-black dark:text-white mb-1">
                       {project.title}
                     </h3>
-                    <p className="text-sm text-black">{project.location}</p>
+                    <p className="text-sm text-black dark:text-gray-300">{project.location}</p>
                   </div>
                   <div className="text-right">
                     <span
                       className={`text-sm font-medium ${
                         project.status === "Available"
-                          ? "text-black"
-                          : "text-black"
+                          ? "text-black dark:text-white"
+                          : "text-black dark:text-gray-400"
                       }`}
                     >
                       {project.status}
                     </span>
-                    <p className="text-sm text-black">{project.price}</p>
+                    <p className="text-sm text-black dark:text-gray-300">{project.price}</p>
                   </div>
                 </div>
               </CardContent>

@@ -13,7 +13,7 @@ export function HeroSection() {
           className="object-cover w-full h-full"
           priority
         />
-        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-black/50 dark:bg-black/70" />
       </div>
 
       {/* Hero Content */}
