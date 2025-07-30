@@ -2,7 +2,7 @@ import { Cloud, Sprout, Mountain } from "lucide-react";
 
 export default function FootprintCard() {
   return (
-    <div className="bg-gray-900 rounded-xl shadow-md p-6 h-fit">
+    <div className="bg-gray-900 dark:bg-gray-800 rounded-xl shadow-md p-6 h-fit">
       <h3 className="text-white font-semibold text-lg mb-6">Your Footprint</h3>
 
       <div className="space-y-6">

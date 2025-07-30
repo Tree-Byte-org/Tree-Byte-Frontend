@@ -23,10 +23,10 @@ export default function CouponsSection() {
   return (
     <div className="w-full">
       <div className="flex justify-between items-center mb-1">
-        <h3 className="font-semibold text-gray-900 text-sm">
+        <h3 className="font-semibold text-gray-900 dark:text-white text-sm">
           Coupons Available
         </h3>
-        <button className="text-xs text-gray-500 hover:text-gray-700">
+        <button className="text-xs text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
           Show all coupons...
         </button>
       </div>
@@ -35,7 +35,7 @@ export default function CouponsSection() {
         {coupons.map((coupon, index) => (
           <div
             key={index}
-            className="relative bg-white rounded-sm border border-gray-200 overflow-hidden cursor-pointer hover:shadow-sm transition-shadow"
+            className="relative bg-white dark:bg-gray-800 rounded-sm border border-gray-200 dark:border-gray-700 overflow-hidden cursor-pointer hover:shadow-sm transition-shadow"
           >
             <div className="aspect-[2/1] relative">
               <Image

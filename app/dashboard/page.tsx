@@ -7,12 +7,16 @@ import TokensSection from "@/components/dashboard/tokens-section";
 
 export default function Page() {
   return (
-    <div className="mt[7rem] flex flex-col gap-4 max-w-6xl mx-auto">
+    <div className="mt[7rem] flex flex-col gap-4 max-w-6xl mx-auto bg-white dark:bg-black min-h-screen">
       {/* Top Header */}
       <div className="flex items-center justify-between w-full">
-        <span className="text-gray-900 font-medium">Hi there Michael,</span>
+        <span className="text-gray-900 dark:text-white font-medium">
+          Hi there Michael,
+        </span>
         <div className="flex items-center gap-2">
-          <span className="text-gray-700">Points available:</span>
+          <span className="text-gray-700 dark:text-gray-300">
+            Points available:
+          </span>
           <div className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
             1569 pts
           </div>
