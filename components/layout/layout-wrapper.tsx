@@ -1,25 +1,25 @@
-'use client'
+"use client";
 
-import { ReactNode } from 'react'
-import { usePathname } from 'next/navigation'
-import { MainNavigation } from '@/components/layout/main-navigation'
+import { ReactNode } from "react";
+import { usePathname } from "next/navigation";
+import { MainNavigation } from "@/components/layout/main-navigation";
 
 export const LayoutWrapper = ({ children }: { children: ReactNode }) => {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   const hideNav =
-    pathname.startsWith('/register') ||
-    pathname.startsWith('/recover') ||
-    pathname.startsWith('/dashboard') ||
-    pathname.startsWith('/coupons') ||
-    pathname.startsWith('/map') ||
-    pathname.startsWith('/projects') ||
-    pathname.startsWith('/featured-projects')
+    pathname.startsWith("/register") ||
+    pathname.startsWith("/recover") ||
+    pathname.startsWith("/dashboard") ||
+    pathname.startsWith("/coupons") ||
+    pathname.startsWith("/map") ||
+    pathname.startsWith("/projects") ||
+    pathname.startsWith("/featured-projects");
 
   return (
     <>
       {!hideNav && <MainNavigation />}
       <main className="min-h-screen">{children}</main>
     </>
-  )
-}
+  );
+};

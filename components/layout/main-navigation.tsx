@@ -4,8 +4,6 @@ import { cn } from "@/lib/utils";
 import { useMainNavigation } from "@/hooks/layout/use-main-navigation";
 import { DesktopNav } from "./main-navigation/desktop-nav";
 import { MobileNav } from "./main-navigation/mobile-nav";
-import { NavLogo } from "./main-navigation/nav-logo";
-import { CtaButton } from "./main-navigation/cta-button";
 import { Menu, X } from "lucide-react";
 
 export function MainNavigation() {
@@ -14,9 +12,10 @@ export function MainNavigation() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        pathname === "/" && "fixed",
+        "top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out",
         scrolled
-          ? "bg-white/5 dark:bg-black/90 backdrop-blur-md shadow-lg"
+          ? "bg-white/5 backdrop-blur-2xl border-b border-white/10 shadow-2xl"
           : "bg-transparent"
       )}
     >
@@ -25,13 +24,13 @@ export function MainNavigation() {
 
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden z-50 p-2 rounded-md"
+          className="lg:hidden z-50 p-2 rounded-md transition-all duration-300"
           aria-label="Toggle menu"
         >
           {isOpen ? (
             <X
               className={cn(
-                "h-6 w-6",
+                "h-6 w-6 transition-colors duration-300",
                 scrolled || pathname !== "/"
                   ? "text-gray-900 dark:text-white"
                   : "text-white"
@@ -40,7 +39,7 @@ export function MainNavigation() {
           ) : (
             <Menu
               className={cn(
-                "h-6 w-6",
+                "h-6 w-6 transition-colors duration-300",
                 scrolled || pathname !== "/"
                   ? "text-gray-900 dark:text-white"
                   : "text-white"

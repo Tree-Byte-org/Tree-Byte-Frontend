@@ -23,6 +23,7 @@ const config: Config = {
         },
         primary: "#7EF45D",
         secondary: "#D9D9D9",
+        tertiary: "#0A0C01",
         muted: {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",

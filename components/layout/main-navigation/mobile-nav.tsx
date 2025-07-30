@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { ChevronDown, Heart } from "lucide-react"
-import { useMainNavigation } from "@/hooks/layout/use-main-navigation"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
-import { navItems } from "@/data/nav-items"
-import { ThemeToggle } from "@/components/ui/theme-toggle"
+import Link from "next/link";
+import { ChevronDown, Heart } from "lucide-react";
+import { useMainNavigation } from "@/hooks/layout/use-main-navigation";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { navItems } from "@/data/nav-items";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 export function MobileNav() {
-  const { isOpen, setIsOpen, isActive } = useMainNavigation()
+  const { isOpen, setIsOpen, isActive } = useMainNavigation();
 
   return (
     <div
@@ -63,7 +63,11 @@ export function MobileNav() {
         </nav>
 
         <div className="mt-8 space-y-4">
-          <Button asChild className="w-full bg-white text-green-700 hover:bg-green-50 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100" size="lg">
+          <Button
+            asChild
+            className="w-full bg-white text-green-700 hover:bg-green-50 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100"
+            size="lg"
+          >
             <Link href="/adopt" onClick={() => setIsOpen(false)}>
               <Heart className="mr-2 h-5 w-5" />
               Adopt a Tree
@@ -75,5 +79,5 @@ export function MobileNav() {
         </div>
       </div>
     </div>
-  )
+  );
 }
