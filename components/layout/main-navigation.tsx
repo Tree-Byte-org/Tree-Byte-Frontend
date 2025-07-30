@@ -13,8 +13,10 @@ export function MainNavigation() {
     <header
       className={cn(
         pathname === "/" && "fixed",
-        "top-0 left-0 right-0 z-50 transition-all duration-300",
-        scrolled ? "bg-black/20 backdrop-blur-md shadow-lg" : "bg-transparent"
+        "top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out",
+        scrolled
+          ? "bg-white/5 backdrop-blur-2xl border-b border-white/10 shadow-2xl"
+          : "bg-transparent"
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
@@ -22,21 +24,25 @@ export function MainNavigation() {
 
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden z-50 p-2 rounded-md"
+          className="lg:hidden z-50 p-2 rounded-md transition-all duration-300"
           aria-label="Toggle menu"
         >
           {isOpen ? (
             <X
               className={cn(
-                "h-6 w-6",
-                scrolled || pathname !== "/" ? "text-gray-900" : "text-white"
+                "h-6 w-6 transition-colors duration-300",
+                scrolled || pathname !== "/"
+                  ? "text-gray-900 dark:text-white"
+                  : "text-white"
               )}
             />
           ) : (
             <Menu
               className={cn(
-                "h-6 w-6",
-                scrolled || pathname !== "/" ? "text-gray-900" : "text-white"
+                "h-6 w-6 transition-colors duration-300",
+                scrolled || pathname !== "/"
+                  ? "text-gray-900 dark:text-white"
+                  : "text-white"
               )}
             />
           )}

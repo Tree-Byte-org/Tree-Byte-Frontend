@@ -1,60 +1,83 @@
 import Image from "next/image";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "../ui/carousel";
 
 export function ProjectsSection() {
   const projects = [
     {
       id: 1,
-      name: "Finca El Silencio",
-      image: "/placeholder.svg?height=400&width=300",
+      name: "Verde Turrialba Farm",
+      image: "/carousel/1.png",
     },
     {
       id: 2,
-      name: "Monteverde",
-      image: "/placeholder.svg?height=400&width=300",
+      name: "Jojoba Farm",
+      image: "/carousel/2.png",
     },
     {
       id: 3,
-      name: "Manuel Antonio",
-      image: "/placeholder.svg?height=400&width=300",
+      name: "Finca el Salto",
+      image: "/carousel/4.png",
     },
     {
       id: 4,
-      name: "Talamanca",
-      image: "/placeholder.svg?height=400&width=300",
+      name: "Finca el Salto",
+      image: "/carousel/4.png",
+    },
+    {
+      id: 5,
+      name: "Finca el Salto",
+      image: "/carousel/4.png",
     },
   ];
 
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section className="py-20 bg-gray-50 dark:bg-black">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="text-center mb-12">
-          <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4">
+          <h2 className="text-5xl lg:text-6xl font-bold text-primary mb-4">
             Reforestation Projects
           </h2>
-          Discover reforestation initiatives active in Costa Rica and select the
-          one that inspires you the most. <br /> Transparent, agile, and
-          traceable thanks to blockchain technology.
+          <p className="text-2xl text-gray-700 dark:text-gray-300">
+            Discover reforestation initiatives active in Costa Rica and select
+            the one that inspires you the most. <br /> Transparent, agile, and
+            traceable thanks to blockchain technology.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {projects.map((project) => (
-            <div key={project.id} className="group cursor-pointer">
-              <div className="relative overflow-hidden rounded-lg aspect-[3/4]">
-                <Image
-                  src={project.image || "/placeholder.svg"}
-                  alt={project.name}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className="text-white font-semibold text-lg">
-                    {project.name}
-                  </h3>
-                </div>
-              </div>
-            </div>
-          ))}
+        <div className="relative">
+          <Carousel className="w-full relative">
+            <CarouselContent>
+              {projects.map((project) => (
+                <CarouselItem
+                  key={project.id}
+                  className="md:basis-1/2 lg:basis-1/4"
+                >
+                  <div className="relative h-80 w-full rounded-lg overflow-hidden group">
+                    <Image
+                      src={project.image || "/placeholder.svg"}
+                      alt={project.name}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <h3 className="text-white font-semibold text-lg text-center">
+                        {project.name}
+                      </h3>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
       </div>
     </section>

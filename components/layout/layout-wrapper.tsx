@@ -6,8 +6,15 @@ import { MainNavigation } from "@/components/layout/main-navigation";
 
 export const LayoutWrapper = ({ children }: { children: ReactNode }) => {
   const pathname = usePathname();
+
   const hideNav =
-    pathname.startsWith("/register") || pathname.startsWith("/recover");
+    pathname.startsWith("/register") ||
+    pathname.startsWith("/recover") ||
+    pathname.startsWith("/dashboard") ||
+    pathname.startsWith("/coupons") ||
+    pathname.startsWith("/map") ||
+    pathname.startsWith("/projects") ||
+    pathname.startsWith("/featured-projects");
 
   return (
     <>

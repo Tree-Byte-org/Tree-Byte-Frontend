@@ -1,73 +1,122 @@
+import Image from "next/image";
+
 export function HowItWorksSection() {
   return (
-    <section className="py-20 bg-white dark:bg-gray-900">
+    <section className="py-20 bg-gray-50 dark:bg-black">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="text-center mb-16">
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-4 italic">
-            "When roots grow deep in purpose, even the smallest seed can change
-            the forest."
-          </p>
-          <h2 className="text-4xl lg:text-5xl font-bold text-lime-400 mb-8">
-            HOW IT WORKS?
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-4xl mx-auto">
-            TreeByte connects you directly with reforestation projects in Costa
-            Rica. With TreeByte, every tree you adopt becomes a traceable and
-            transparent action that benefits the planet and local communities.
-          </p>
+          <div className="flex gap-4">
+            <Image
+              src="/images/three.png"
+              alt="Quote"
+              width={100}
+              height={100}
+              className="mx-auto mb-4"
+            />
+            <p className="text-5xl text-gray-600 dark:text-gray-300 mb-4 italic">
+              When roots grow deep in purpose,{" "}
+              <span className="font-bold">
+                {" "}
+                even the smallest seed can change the forest.
+              </span>
+            </p>
+          </div>
         </div>
+
+        <h2 className="text-center text-4xl lg:text-6xl font-bold text-primary mb-8">
+          HOW IT WORKS?
+        </h2>
+        <p className="text-center text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto mb-20">
+          TreeByte connects you directly with reforestation projects in Costa
+          Rica. With TreeByte, every tree you adopt becomes a traceable and
+          transparent action that benefits the planet and local communities.
+        </p>
 
         <div className="grid md:grid-cols-4 gap-8 items-start">
           {/* Step 1 */}
-          <div className="text-center">
-            <div className="bg-lime-400 text-black p-8 rounded-lg mb-6 relative">
-              <div className="text-6xl font-bold mb-4">1</div>
-              <div className="flex items-center justify-center mb-4">
-                <span className="text-4xl">🌱</span>
-              </div>
-              <h3 className="text-xl font-bold">Choose a project</h3>
+          <div className="bg-secondary p-8 rounded-lg text-center flex flex-col items-center justify-center gap-4">
+            <div className="flex">
+              <Image
+                src="/icons/icon1.png"
+                alt="Blockchain"
+                width={80}
+                height={60}
+              />
+
+              <h3 className="text-3xl font-bold text-gray-900 mb-3">
+                Choose a project
+              </h3>
             </div>
+
+            <p className="text-gray-600  text-sm">
+              Explore active reforestation initiatives in Costa Rica, select the
+              one that inspires you the most, and discover the type of trees,
+              location, and community behind the effort.
+            </p>
           </div>
 
           {/* Step 2 */}
-          <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
-            <div className="flex items-center justify-center w-16 h-16 bg-lime-400 rounded-full mb-4 mx-auto">
-              <span className="text-2xl">📄</span>
+          <div className="bg-secondary p-8 rounded-lg text-center flex flex-col items-center justify-center gap-4">
+            <div className="flex">
+              <Image
+                src="/icons/icon2.png"
+                alt="Blockchain"
+                width={80}
+                height={60}
+              />
+
+              <h3 className="text-3xl font-bold text-gray-900 mb-3">
+                Contribute
+              </h3>
             </div>
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 text-center">
-              Adopt a tree
-            </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-300 text-center">
-              You will receive a digital certificate that proves your
-              contribution to reforestation.
+
+            <p className="text-gray-600  text-sm">
+              With a small token contribution, you can adopt trees in this
+              project. The entire process is streamlined, transparent, and
+              verifiable thanks to blockchain technology.
             </p>
           </div>
 
           {/* Step 3 */}
-          <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
-            <div className="flex items-center justify-center w-16 h-16 bg-lime-400 rounded-full mb-4 mx-auto">
-              <span className="text-2xl">👁️</span>
+          <div className="bg-secondary p-8 rounded-lg text-center flex flex-col items-center justify-center gap-4">
+            <div className="flex">
+              <Image
+                src="/icons/icon3.png"
+                alt="Blockchain"
+                width={80}
+                height={60}
+              />
+
+              <h3 className="text-3xl font-bold text-gray-900 mb-3">
+                Receive your NFT
+              </h3>
             </div>
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 text-center">
-              Monitor its growth
-            </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-300 text-center">
-              Track the progress of your tree through our transparent monitoring
-              system.
+
+            <p className="text-gray-600  text-sm">
+              Get a digital receipt of participation, track the progress of your
+              trees, and access exclusive benefits within our regenerative
+              tourism network.
             </p>
           </div>
 
           {/* Step 4 */}
-          <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg">
-            <div className="flex items-center justify-center w-16 h-16 bg-lime-400 rounded-full mb-4 mx-auto">
-              <span className="text-2xl">🔍</span>
+          <div className="bg-secondary p-8 rounded-lg text-center flex flex-col items-center justify-center gap-4">
+            <div className="flex">
+              <Image
+                src="/icons/icon4.png"
+                alt="Blockchain"
+                width={80}
+                height={60}
+              />
+
+              <h3 className="text-3xl font-bold text-gray-900 mb-3">
+                Tracking and community
+              </h3>
             </div>
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 text-center">
-              Tracking and verification
-            </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-300 text-center">
-              Blockchain technology ensures complete transparency and
-              traceability.
+
+            <p className="text-gray-600  text-sm">
+              Live the full experience by participating in in-person
+              reforestation events or visiting partner regenerative farms.
             </p>
           </div>
         </div>
