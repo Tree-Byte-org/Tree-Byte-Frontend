@@ -9,8 +9,6 @@ interface DesktopNavProps {
 }
 
 export function DesktopNav({ scrolled, pathname }: DesktopNavProps) {
-  const isHomePage = pathname === "/";
-
   return (
     <div className="w-full px-40">
       {/* Main navigation */}
@@ -94,8 +92,10 @@ export function DesktopNav({ scrolled, pathname }: DesktopNavProps) {
       {!scrolled && (
         <div
           className={`h-px ${
-            pathname === "/" ? "bg-white" : "bg-black"
-          } w-full`}
+            pathname === "/"
+              ? "bg-white dark:bg-black"
+              : "bg-black dark:bg-white"
+          } w-full mb-4`}
         ></div>
       )}
     </div>
