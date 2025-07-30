@@ -5,7 +5,7 @@ export const BusinessPanel = () => {
   return (
     <section className="min-h-screen bg-white dark:bg-black">
       <div className="container mx-auto px-4 my-4">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mb-4">
           <h1 className="text-5xl font-bold">Business Panel</h1>
 
           <div className="flex items-center gap-4">
