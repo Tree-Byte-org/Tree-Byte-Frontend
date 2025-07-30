@@ -8,7 +8,7 @@ import { FooterSection } from "@/components/home/footer-section";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white dark:bg-black">
+    <>
       <HeroSection />
       <AboutSection />
       <ProjectsSection />
@@ -16,6 +16,6 @@ export default function Home() {
       <NftSection />
       <FarmsSection />
       <FooterSection />
-    </div>
+    </>
   );
 }
