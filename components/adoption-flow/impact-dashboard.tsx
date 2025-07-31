@@ -11,6 +11,7 @@ import {
   Plane,
   Home,
 } from "lucide-react";
+import Image from "next/image";
 
 interface ImpactDashboardProps {
   farm: any;
@@ -95,7 +96,7 @@ export function ImpactDashboard({ farm }: ImpactDashboardProps) {
           <CardContent>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div>
-                <img
+                <Image
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%2018%20may%202025%2C%2008_57_44%20a.m.-iQiCUlagUoq0xz0w18ULBvAYU8wYYo.png"
                   alt="Your Guanacaste tree"
                   className="w-full rounded-lg shadow-lg"

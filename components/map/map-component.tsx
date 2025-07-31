@@ -1,6 +1,5 @@
-"use client";
-
 import { MapPin, TreePalm, TentTree } from "lucide-react";
+import Image from "next/image";
 
 export default function ProjectMapSection() {
   return (
@@ -12,7 +11,7 @@ export default function ProjectMapSection() {
           <div className="flex flex-col items-center">
             {/* Mapa */}
             <div className="border border-white rounded-lg overflow-hidden">
-              <img
+              <Image
                 src="/map/map-region.png"
                 alt="Project Map"
                 className="w-full max-w-md object-cover"

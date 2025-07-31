@@ -1,7 +1,6 @@
-"use client";
-
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 type Project = {
   id: string; 
@@ -21,7 +20,7 @@ export default function ProjectCard({
   return (
     <Card className="shadow-md">
       <CardHeader>
-        <img
+        <Image
           src={project.photo_url || "/default-project.jpg"}
           alt={project.name}
           className="w-full h-48 object-cover rounded-md"

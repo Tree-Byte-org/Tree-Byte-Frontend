@@ -1,5 +1,4 @@
 'use client'
-
 import { useRegisterForm } from '@/hooks/auth/use-register-form'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -7,6 +6,7 @@ import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
 import { Sprout, ShieldCheck } from 'lucide-react'
 import { useState } from 'react'
+import Image from 'next/image'
 
 export default function RegisterForm() {
   const {
@@ -36,7 +36,7 @@ export default function RegisterForm() {
         <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-emerald-100 p-8 space-y-8">
           <div className="text-center space-y-4">
             <div className="flex justify-center mb-4">
-              <img src="/icons/logo-treebyte.svg" alt="TreeByte Logo" className="w-20 h-20" />
+              <Image src="/icons/logo-treebyte.svg" alt="TreeByte Logo" className="w-20 h-20" />
             </div>
 
             <div className="space-y-2">
@@ -125,7 +125,7 @@ export default function RegisterForm() {
                   variant="outline"
                   className="w-full h-12 border-2 border-gray-200 hover:border-emerald-300 hover:bg-emerald-50 rounded-xl transition-all duration-300 transform hover:scale-[1.02]"
                 >
-                  <img src="/icons/google.svg" alt="Google" className="w-5 h-5 mr-3" />
+                  <Image src="/icons/google.svg" alt="Google" className="w-5 h-5 mr-3" />
                   Continue with Google
                 </Button>
               </>

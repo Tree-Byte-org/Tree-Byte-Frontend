@@ -1,11 +1,11 @@
 'use client'
-
 import { useRecovery } from '@/hooks/auth/use-recovery'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 import { ShieldCheck, RefreshCw } from 'lucide-react'
 import { useState } from 'react'
+import Image from 'next/image'
 
 export default function RecoveryForm() {
   const {
@@ -34,7 +34,7 @@ export default function RecoveryForm() {
         <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-emerald-100 p-8 space-y-8">
           <div className="text-center space-y-4">
             <div className="flex justify-center mb-4">
-              <img src="/icons/logo-treebyte.svg" alt="TreeByte Logo" className="w-20 h-20" />
+              <Image src="/icons/logo-treebyte.svg" alt="TreeByte Logo" className="w-20 h-20" />
             </div>
 
             <div className="space-y-2">
