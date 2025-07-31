@@ -75,7 +75,7 @@ export default function RecoveryForm() {
               <div className="flex items-start gap-2 text-xs text-yellow-700 bg-yellow-100 p-3 rounded-lg border border-yellow-200">
                 <ShieldCheck className="w-4 h-4 mt-[2px]" />
                 <span>
-                  This passphrase was used to encrypt your wallet. It's required to unlock your access.{' '}
+                  This passphrase was used to encrypt your wallet. It&apos;s required to unlock your access.{' '}
                   <strong>Keep it safe</strong> and never share it.
                 </span>
               </div>

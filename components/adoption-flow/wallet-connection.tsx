@@ -34,7 +34,7 @@ export function WalletConnection({
           🔗 2. Connect your wallet
         </h2>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-          Click "Connect" to link your Stellar-compatible wallet. It's fast,
+          Click &quot;Connect&quot; to link your Stellar-compatible wallet. It&apos;s fast,
           secure and necessary to receive your NFT.
         </p>
       </div>

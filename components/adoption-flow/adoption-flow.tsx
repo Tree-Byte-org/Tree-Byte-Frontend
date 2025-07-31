@@ -117,7 +117,7 @@ export function AdoptionFlow() {
         </h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
           Adopting a tree and becoming part of the regenerative movement is very
-          easy. Here's how to do it step by step:
+          easy. Here&apos;s how to do it step by step:
         </p>
       </div>
 
