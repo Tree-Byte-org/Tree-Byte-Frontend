@@ -99,8 +99,25 @@ const projects: Project[] = [
   },
 ];
 
+interface ModalDataInterface {
+    id: number;
+    title: string;
+    location: string;
+    rating: number;
+    mainImage: string;
+    thumbnails: string[];
+    capacity: string;
+    remaining: string;
+    annualImpact: string;
+    about: string;
+    mission: string;
+    species: string[];
+    activities: string[];
+}
+
+
 export default function ProjectCards() {
-  const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [selectedProject, setSelectedProject] = useState<ModalDataInterface>();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const modalData = {
