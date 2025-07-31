@@ -1,4 +1,3 @@
-// src/lib/stellar/server.ts
 import Server from "@stellar/stellar-sdk";
 import { STELLAR_CONFIG } from "./config";
 
