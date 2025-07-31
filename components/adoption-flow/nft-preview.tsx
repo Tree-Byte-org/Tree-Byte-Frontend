@@ -11,9 +11,10 @@ import {
   Leaf,
 } from "lucide-react";
 import Image from "next/image";
+import { Farm } from "./types";
 
 interface NFTPreviewProps {
-  farm: any;
+  farm: Farm | undefined;
   onNext: () => void;
 }
 

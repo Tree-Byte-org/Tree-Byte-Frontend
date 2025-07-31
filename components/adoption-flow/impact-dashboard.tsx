@@ -13,9 +13,10 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { Farm } from "./types";
 
 interface ImpactDashboardProps {
-  farm: any;
+  farm: Farm | undefined;
 }
 
 export function ImpactDashboard({ farm }: ImpactDashboardProps) {

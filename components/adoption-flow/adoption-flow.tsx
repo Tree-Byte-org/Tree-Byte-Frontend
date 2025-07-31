@@ -16,6 +16,7 @@ import { TreeAdoption } from "@/components/adoption-flow/tree-adoption";
 import { NFTPreview } from "@/components/adoption-flow/nft-preview";
 import { ImpactDashboard } from "@/components/adoption-flow/impact-dashboard";
 import Link from "next/link";
+import { Farm } from "./types";
 
 const steps = [
   {
@@ -52,7 +53,7 @@ const steps = [
 
 export function AdoptionFlow() {
   const [currentStep, setCurrentStep] = useState(1);
-  const [selectedFarm, setSelectedFarm] = useState(null);
+  const [selectedFarm, setSelectedFarm] = useState<Farm>();
   const [walletConnected, setWalletConnected] = useState(false);
   const [adoptionComplete, setAdoptionComplete] = useState(false);
 

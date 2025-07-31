@@ -4,9 +4,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { TreePine, MapPin, Leaf, DollarSign, ArrowRight, Heart, Plus, Minus, Globe, Bird, Users } from "lucide-react"
 import Image from "next/image"
+import { Farm } from "./types"
 
 interface TreeAdoptionProps {
-  farm: any
+  farm: Farm | undefined
   onComplete: (complete: boolean) => void
   onNext: () => void
 }
