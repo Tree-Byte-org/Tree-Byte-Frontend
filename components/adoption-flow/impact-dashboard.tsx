@@ -12,6 +12,7 @@ import {
   Home,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface ImpactDashboardProps {
   farm: any;
@@ -237,10 +238,10 @@ export function ImpactDashboard({ farm }: ImpactDashboardProps) {
         {/* Return Home */}
         <div className="text-center">
           <Button size="lg" asChild className="bg-green-600 hover:bg-green-700">
-            <a href="/">
+            <Link href={'/'}>
               <Home className="mr-2 h-4 w-4" />
               Back to home
-            </a>
+            </Link>
           </Button>
           <p className="text-sm text-gray-500 mt-4">
             Thank you for being part of the TreeByte regenerative movement! 🌱
