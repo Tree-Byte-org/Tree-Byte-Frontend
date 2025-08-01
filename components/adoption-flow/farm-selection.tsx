@@ -1,10 +1,11 @@
-"use client"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { MapPin, TreePine, Users, Star, Heart, ArrowRight } from "lucide-react"
+import Image from "next/image"
+import { Farm } from "./types"
 
-const farms = [
+const farms: Farm[] = [
   {
     id: 1,
     name: "Verde Turrialba Farm",
@@ -68,8 +69,8 @@ const farms = [
 ]
 
 interface FarmSelectionProps {
-  onSelectFarm: (farm: any) => void
-  selectedFarm: any
+  onSelectFarm: (farm: Farm) => void
+  selectedFarm: Farm | undefined
   onNext: () => void
 }
 
@@ -95,7 +96,7 @@ export function FarmSelection({ onSelectFarm, selectedFarm, onNext }: FarmSelect
           >
             <CardHeader className="p-0">
               <div className="relative">
-                <img
+                <Image
                   src={farm.image || "/placeholder.svg"}
                   alt={farm.name}
                   className="w-full h-48 object-cover rounded-t-lg"

@@ -1,5 +1,3 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -12,9 +10,11 @@ import {
   Calendar,
   Leaf,
 } from "lucide-react";
+import Image from "next/image";
+import { Farm } from "./types";
 
 interface NFTPreviewProps {
-  farm: any;
+  farm: Farm | undefined;
   onNext: () => void;
 }
 
@@ -47,7 +47,7 @@ export function NFTPreview({ farm, onNext }: NFTPreviewProps) {
         {/* NFT Visual */}
         <div className="text-center">
           <div className="relative inline-block">
-            <img
+            <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%2018%20may%202025%2C%2008_57_44%20a.m.-iQiCUlagUoq0xz0w18ULBvAYU8wYYo.png"
               alt="Your TreeByte NFT - Guanacaste"
               className="w-full max-w-md mx-auto rounded-lg shadow-2xl"
