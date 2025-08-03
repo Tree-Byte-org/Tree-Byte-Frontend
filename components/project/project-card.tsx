@@ -21,9 +21,12 @@ export default function ProjectCard({
     <Card className="shadow-md">
       <CardHeader>
         <Image
+          width={600}
+          height={600}
           src={project.photo_url || "/default-project.jpg"}
           alt={project.name}
           className="w-full h-48 object-cover rounded-md"
+          priority
         />
         <h3 className="text-lg font-bold mt-2">{project.name}</h3>
       </CardHeader>
