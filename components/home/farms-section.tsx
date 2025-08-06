@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Locate, TentTree, Trees } from "lucide-react";
+import { Locate } from "lucide-react";
 
 export function FarmsSection() {
   return (

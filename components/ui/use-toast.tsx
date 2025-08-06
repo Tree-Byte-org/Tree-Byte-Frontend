@@ -1,4 +1,4 @@
-import { useContext, createContext, useState, ReactNode } from "react";
+import { useContext, createContext, ReactNode } from "react";
 import { ToastProps } from "./toast";
 
 type Toast = Omit<ToastProps, "id">;

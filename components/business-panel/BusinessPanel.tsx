@@ -45,7 +45,7 @@ export const BusinessPanel = () => {
         <div className="grid grid-cols-6 gap-4">
           <div className="col-span-2 bg-black dark:bg-gray-900 p-6 rounded-lg">
             <h2 className="text-2xl font-bold text-white mb-6">
-              Your company's impact
+              Your company&apos;s impact
             </h2>
 
             <div className="grid grid-cols-3 gap-10">

@@ -11,9 +11,12 @@ import {
   Plane,
   Home,
 } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { Farm } from "./types";
 
 interface ImpactDashboardProps {
-  farm: any;
+  farm: Farm | undefined;
 }
 
 export function ImpactDashboard({ farm }: ImpactDashboardProps) {
@@ -95,7 +98,7 @@ export function ImpactDashboard({ farm }: ImpactDashboardProps) {
           <CardContent>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div>
-                <img
+                <Image
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%2018%20may%202025%2C%2008_57_44%20a.m.-iQiCUlagUoq0xz0w18ULBvAYU8wYYo.png"
                   alt="Your Guanacaste tree"
                   className="w-full rounded-lg shadow-lg"
@@ -236,10 +239,10 @@ export function ImpactDashboard({ farm }: ImpactDashboardProps) {
         {/* Return Home */}
         <div className="text-center">
           <Button size="lg" asChild className="bg-green-600 hover:bg-green-700">
-            <a href="/">
+            <Link href={'/'}>
               <Home className="mr-2 h-4 w-4" />
               Back to home
-            </a>
+            </Link>
           </Button>
           <p className="text-sm text-gray-500 mt-4">
             Thank you for being part of the TreeByte regenerative movement! 🌱
