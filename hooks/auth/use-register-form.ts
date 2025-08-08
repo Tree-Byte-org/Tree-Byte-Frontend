@@ -26,12 +26,18 @@ export const useRegisterForm = () => {
 
   const submitInvisibleWallet = async () => {
     if (!validateEmail(email)) {
-      setError('Invalid email address')
+      handleError(new Error('Invalid email address'), { 
+        context: { feature: 'register', validation: 'email' }, 
+        toast: true 
+      })
       return
     }
 
     if (!validatePassphrase(passphrase)) {
-      setError('Passphrase must be at least 8 characters long')
+      handleError(new Error('Passphrase must be at least 8 characters long'), { 
+        context: { feature: 'register', validation: 'passphrase' }, 
+        toast: true 
+      })
       return
     }
 

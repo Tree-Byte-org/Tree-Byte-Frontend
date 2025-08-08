@@ -94,7 +94,7 @@ export default function RegisterForm() {
               </div>
             )}
 
-            {error && <p className="text-sm text-red-600 font-medium text-center">{error}</p>}
+
 
             <Button
               onClick={handleEmailSubmit}
