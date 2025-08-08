@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useErrorHandler } from '@/hooks/use-error-handler'
 
 export function useRecovery() {
   const [encryptedKey, setEncryptedKey] = useState('')
@@ -8,6 +9,7 @@ export function useRecovery() {
   const [publicKey, setPublicKey] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const { handleError } = useErrorHandler()
 
   const handleRecover = async () => {
     setLoading(true)
@@ -33,8 +35,9 @@ export function useRecovery() {
       }
 
       setPublicKey(result.publicKey)
-    } catch (err: any) {
-      setError(err.message || 'Something went wrong')
+    } catch (err: unknown) {
+      const appError = handleError(err, { context: { feature: 'recovery' }, toast: true })
+      setError(appError.message || 'Something went wrong')
     } finally {
       setLoading(false)
     }

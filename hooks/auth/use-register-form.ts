@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { createWallet } from '@/services/wallet.service'
+import { useErrorHandler } from '@/hooks/use-error-handler'
 import { useGoogleLogin } from '@react-oauth/google'
 
 export const useRegisterForm = () => {
@@ -8,6 +9,7 @@ export const useRegisterForm = () => {
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
   const [googleStep, setGoogleStep] = useState(false)
+  const { handleError } = useErrorHandler()
 
   const handleEmailChange = (value: string) => {
     setEmail(value)
@@ -38,8 +40,9 @@ export const useRegisterForm = () => {
       const result = await createWallet(email, passphrase)
       console.log('Wallet created:', result)
       // TODO: redirect or feedback
-    } catch (err: any) {
-      setError(err.message)
+    } catch (err: unknown) {
+      const appError = handleError(err, { context: { feature: 'register', email }, toast: true })
+      setError(appError.message)
     } finally {
       setLoading(false)
     }
