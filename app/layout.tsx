@@ -4,6 +4,8 @@ import { ReactNode } from "react";
 import { Nunito_Sans } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { LayoutWrapper } from "@/components/layout/layout-wrapper";
+import { ErrorBoundary, GlobalErrorHandlers } from "@/components/error-boundary";
+import { Toaster } from "@/components/ui/sonner";
 
 const nunitoSans = Nunito_Sans({
   subsets: ["latin"],
@@ -31,7 +33,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           enableSystem={true}
           disableTransitionOnChange={false}
         >
-          <LayoutWrapper>{children}</LayoutWrapper>
+          <GlobalErrorHandlers />
+          <ErrorBoundary>
+            <LayoutWrapper>{children}</LayoutWrapper>
+          </ErrorBoundary>
+          <Toaster richColors position="top-right" />
         </ThemeProvider>
       </body>
     </html>
