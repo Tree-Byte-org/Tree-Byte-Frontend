@@ -17,6 +17,14 @@ Key Features:
 - Token Purchase: Handles the token purchase transaction and manages loading states during the transaction process.
 - Data Fetching: Fetches transaction data to confirm the transaction status and retrieve results.
 
+The hook has 3 config variables:
+
+```js
+const CONTRACT_ID = "CANSAO7W4JWZE445NXVN34IXMIZ2KZI6YM4HHEE3AZ7U737MC3ZOE67H";
+const NETWORK_PASSPHRASE = Networks.TESTNET;
+const SOROBAN_URL = "https://soroban-testnet.stellar.org";
+```
+
 ### Notes
 
 `getTransaction` Does not work after the transaction is successful so we fetch data through http request.
