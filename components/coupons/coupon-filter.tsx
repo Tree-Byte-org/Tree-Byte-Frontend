@@ -12,14 +12,19 @@ import {
 } from "@/components/ui/select";
 import type { CouponFilters } from "@/hooks/coupons/use-coupons";
 
-type Props = {
+interface Props {
   filters: CouponFilters;
   onChange: (next: Partial<CouponFilters>) => void;
-};
+}
 
+/**
+ * Filter controls for coupon listings with search, status, activity, and sort options.
+ * Uses a responsive grid layout that adapts from single column to multi-column on larger screens.
+ */
 export function CouponFilter({ filters, onChange }: Props) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+      {/* Search field - takes 2 columns on desktop */}
       <div className="md:col-span-2">
         <Label className="mb-1 block">Search</Label>
         <Input
@@ -29,6 +34,7 @@ export function CouponFilter({ filters, onChange }: Props) {
         />
       </div>
 
+      {/* Status filter dropdown */}
       <div>
         <Label className="mb-1 block">Status</Label>
         <Select
@@ -49,10 +55,11 @@ export function CouponFilter({ filters, onChange }: Props) {
         </Select>
       </div>
 
+      {/* Activity type filter dropdown */}
       <div>
         <Label className="mb-1 block">Activity</Label>
         <Select
-          value={filters.activity}
+          value={filters.activity as string}
           onValueChange={(v) =>
             onChange({ activity: v as CouponFilters["activity"] })
           }
@@ -70,6 +77,7 @@ export function CouponFilter({ filters, onChange }: Props) {
         </Select>
       </div>
 
+      {/* Sort controls with field and direction selection */}
       <div>
         <Label className="mb-1 block">Sort</Label>
         <div className="flex gap-2">
@@ -104,6 +112,7 @@ export function CouponFilter({ filters, onChange }: Props) {
         </div>
       </div>
 
+      {/* Reset button - full width on mobile, right-aligned on desktop */}
       <div className="md:col-span-5 flex justify-end">
         <Button
           variant="ghost"
