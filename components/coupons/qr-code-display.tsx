@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -60,8 +61,8 @@ export default function QRCodeDisplay({
     try {
       const qrString = JSON.stringify(qrData);
       const url = await QRCode.toDataURL(qrString, {
-        width: 320,
-        margin: 3,
+        width: 800, // Higher resolution for better scanning
+        margin: 4,
         color: {
           dark: "#000000",
           light: "#FFFFFF",
@@ -78,14 +79,28 @@ export default function QRCodeDisplay({
   const downloadQRCode = () => {
     if (!qrCodeUrl) return;
 
-    const link = document.createElement("a");
-    link.download = `coupon-qr-${coupon.businessName
-      .replace(/\s+/g, "-")
-      .toLowerCase()}.png`;
-    link.href = qrCodeUrl;
-    link.click();
+    // Convert the Base64 DataURL into a Blob
+    fetch(qrCodeUrl)
+      .then((res) => res.blob())
+      .then((blob) => {
+        const url = URL.createObjectURL(blob);
 
-    onDownload?.();
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = `coupon-qr-${coupon.businessName
+          .replace(/\s+/g, "-")
+          .toLowerCase()}.png`;
+
+        document.body.appendChild(link); // safer in Safari
+        link.click();
+        document.body.removeChild(link);
+
+        URL.revokeObjectURL(url); // cleanup
+        onDownload?.();
+      })
+      .catch((err) => {
+        console.error("Failed to download QR code:", err);
+      });
   };
 
   const copyFallbackCode = async () => {
@@ -159,9 +174,9 @@ export default function QRCodeDisplay({
                 Scan to verify coupon
               </p>
             </CardHeader>
-            <CardContent className="flex flex-col items-center px-8 pb-8">
+            <CardContent className="flex flex-col items-center px-4 sm:px-8 pb-8">
               {loading ? (
-                <div className="w-80 h-80 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center">
+                <div className="w-full max-w-xs aspect-square bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center">
                   <div className="text-center">
                     <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 dark:border-white mx-auto mb-4"></div>
                     <p className="text-gray-500 dark:text-gray-400">
@@ -170,15 +185,21 @@ export default function QRCodeDisplay({
                   </div>
                 </div>
               ) : qrCodeUrl ? (
-                <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700">
-                  <img
-                    src={qrCodeUrl || "/placeholder.svg"}
-                    alt="Coupon QR Code"
-                    className="w-80 h-80 rounded-lg"
-                  />
+                <div className="bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-gray-100 dark:border-gray-700 w-full max-w-xs">
+                  <div className="relative aspect-square w-full">
+                    <Image
+                      src={qrCodeUrl}
+                      alt={`QR Code for ${coupon.businessName}`}
+                      fill
+                      className="rounded-lg"
+                      priority
+                      quality={100}
+                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 320px"
+                    />
+                  </div>
                 </div>
               ) : (
-                <div className="w-80 h-80 bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center">
+                <div className="w-full max-w-xs aspect-square bg-gray-100 dark:bg-gray-800 rounded-xl flex items-center justify-center">
                   <div className="text-center">
                     <AlertCircle className="w-8 h-8 text-gray-400 mx-auto mb-2" />
                     <p className="text-gray-500 dark:text-gray-400">
@@ -193,7 +214,7 @@ export default function QRCodeDisplay({
                   onClick={downloadQRCode}
                   variant="outline"
                   size="lg"
-                  className="mt-6 border-gray-200 dark:border-gray-700 bg-transparent px-6 py-3"
+                  className="mt-6 border-gray-200 dark:border-gray-700 bg-transparent px-6 py-3 w-full max-w-xs"
                 >
                   <Download className="w-5 h-5 mr-2" />
                   Download QR Code

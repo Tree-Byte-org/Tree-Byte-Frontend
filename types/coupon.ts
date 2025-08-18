@@ -1,3 +1,18 @@
+export interface Coupon {
+  id: string;
+  businessName: string;
+  description: string;
+  activityType: ActivityType;
+  status: CouponStatus;
+  expirationDate: string;
+  acquisitionDate: string;
+  redemptionCode?: string;
+  userAddress: string;
+  imageUrl?: string;
+  redemptionDate?: string;
+  redemptionLocation?: string;
+}
+
 export enum CouponStatus {
   Active = "Active",
   Redeemed = "Redeemed",
@@ -11,15 +26,15 @@ export enum ActivityType {
   Cultural = "Cultural",
 }
 
-export interface Coupon {
-  id: string;
-  userAddress: string;
-  businessName: string;
-  activityType: ActivityType;
-  description: string;
-  status: CouponStatus;
-  expirationDate: string;
-  acquisitionDate: string;
-  imageUrl?: string;
-  redemptionCode?: string;
+export interface RedemptionResult {
+  success: boolean;
+  message: string;
+  coupon?: Coupon;
+  error?: string;
+  errorType?:
+    | "expired"
+    | "already_redeemed"
+    | "network_error"
+    | "invalid_coupon"
+    | "unknown";
 }

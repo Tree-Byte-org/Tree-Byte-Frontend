@@ -7,7 +7,8 @@ import CouponFilter from "@/components/coupons/coupon-filter";
 import { Card } from "@/components/ui/card";
 
 export default function CouponsPage() {
-  const { coupons, loading, error, filters, setFilters } = useCoupons();
+  const { coupons, loading, error, filters, setFilters, redeemCoupon } =
+    useCoupons();
   const [localFilters, setLocalFilters] = useState<CouponFilters>(filters);
 
   const handleChange = (next: Partial<CouponFilters>) => {
@@ -42,7 +43,7 @@ export default function CouponsPage() {
         {!loading && !error && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {coupons.map((c) => (
-              <CouponCard key={c.id} coupon={c} />
+              <CouponCard key={c.id} coupon={c} onRedemption={redeemCoupon} />
             ))}
           </div>
         )}
