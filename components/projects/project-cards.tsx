@@ -1,185 +1,205 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
+import { Heart, RefreshCw } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import ProjectModal from "./project-modal";
+import { useProjects, useProject } from "@/hooks/projects/use-projects";
+import { useToggleProjectFavorite, usePrefetchProject } from "@/hooks/projects/use-project-mutations";
+import type { EnhancedProject } from "@/services/api/projects-api";
 
-interface Project {
-  id: number;
-  title: string;
-  location: string;
-  status: "Available" | "Coming soon";
-  price: string;
-  image: string;
-  alt: string;
+// Loading skeleton component
+function ProjectCardSkeleton() {
+  return (
+    <Card className="overflow-hidden bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
+      <Skeleton className="w-full h-48" />
+      <CardContent className="p-4">
+        <div className="space-y-2">
+          <Skeleton className="h-4 w-3/4" />
+          <Skeleton className="h-3 w-1/2" />
+          <div className="flex justify-between">
+            <Skeleton className="h-3 w-1/4" />
+            <Skeleton className="h-3 w-1/4" />
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
 }
 
-const projects: Project[] = [
-  {
-    id: 1,
-    title: "Finca Chapinero",
-    location: "Turriaba, Cartago",
-    status: "Available",
-    price: "325/750",
-    image: "/projects/jaguar.jpg",
-    alt: "Jaguar in tropical forest",
-  },
-  {
-    id: 2,
-    title: "Finca Chapinero",
-    location: "Turriaba, Cartago",
-    status: "Available",
-    price: "325/750",
-    image: "/projects/sloth.jpg",
-    alt: "Sloth in forest canopy",
-  },
-  {
-    id: 3,
-    title: "Finca Chapinero",
-    location: "Turriaba, Cartago",
-    status: "Available",
-    price: "325/750",
-    image: "/projects/pastoral-landscape.jpg",
-    alt: "Pastoral landscape with trees",
-  },
-  {
-    id: 4,
-    title: "Finca Chapinero",
-    location: "Turriaba, Cartago",
-    status: "Available",
-    price: "325/750",
-    image: "/projects/hiking-trail.jpg",
-    alt: "Person hiking through misty forest",
-  },
-  {
-    id: 5,
-    title: "Finca Chapinero",
-    location: "Turriaba, Cartago",
-    status: "Available",
-    price: "325/750",
-    image: "/projects/forest-aerial.jpg",
-    alt: "Aerial view of forest canopy",
-  },
-  {
-    id: 6,
-    title: "Finca Chapinero",
-    location: "Turriaba, Cartago",
-    status: "Available",
-    price: "325/750",
-    image: "/projects/waterfall.jpg",
-    alt: "Waterfall in lush forest",
-  },
-  {
-    id: 7,
-    title: "Finca Chapinero",
-    location: "Turriaba, Cartago",
-    status: "Coming soon",
-    price: "325/750",
-    image: "/projects/misty-forest.jpg",
-    alt: "Misty forest landscape",
-  },
-  {
-    id: 8,
-    title: "Finca Chapinero",
-    location: "Turriaba, Cartago",
-    status: "Coming soon",
-    price: "325/750",
-    image: "/projects/tall-forest.jpg",
-    alt: "Tall forest with towering trees",
-  },
-  {
-    id: 9,
-    title: "Finca Chapinero",
-    location: "Turriaba, Cartago",
-    status: "Coming soon",
-    price: "325/750",
-    image: "/projects/sunlight-leaves.jpg",
-    alt: "Sunlight filtering through leaves",
-  },
-];
+// Error component
+function ProjectCardsError({ error, refetch }: { error: Error; refetch: () => void }) {
+  return (
+    <div className="flex flex-col items-center justify-center py-16 space-y-4">
+      <Alert className="max-w-md">
+        <AlertDescription>
+          Failed to load projects. Please try again.
+        </AlertDescription>
+      </Alert>
+      <Button onClick={refetch} variant="outline" className="flex items-center gap-2">
+        <RefreshCw className="w-4 h-4" />
+        Retry
+      </Button>
+    </div>
+  );
+}
+
+// Individual project card component
+function ProjectCard({ 
+  project, 
+  onCardClick, 
+  onFavoriteToggle 
+}: { 
+  project: EnhancedProject; 
+  onCardClick: () => void;
+  onFavoriteToggle: () => void;
+}) {
+  const prefetchProject = usePrefetchProject();
+
+  return (
+    <Card
+      className="overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 group"
+      onClick={onCardClick}
+      onMouseEnter={() => prefetchProject(project.id)}
+    >
+      <div className="relative w-full">
+        <Image
+          src={project.imageUrl || project.image || "/placeholder.svg"}
+          alt={project.name || project.title || "Project image"}
+          width={400}
+          height={300}
+          className="w-full h-auto object-contain"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+        <Button
+          variant="ghost"
+          size="sm"
+          className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity"
+          onClick={(e) => {
+            e.stopPropagation();
+            onFavoriteToggle();
+          }}
+        >
+          <Heart 
+            className={`w-4 h-4 ${project.isFavorite ? 'fill-red-500 text-red-500' : 'text-gray-600'}`} 
+          />
+        </Button>
+      </div>
+      <CardContent className="p-4">
+        <div className="flex justify-between items-start mb-2">
+          <div>
+            <h3 className="font-semibold text-black dark:text-white mb-1">
+              {project.name || project.title}
+            </h3>
+            <p className="text-sm text-black dark:text-gray-300">
+              {project.location}
+            </p>
+          </div>
+          <div className="text-right">
+            <span
+              className={`text-sm font-medium ${
+                project.status === "Available" || project.status === "active"
+                  ? "text-green-600 dark:text-green-400"
+                  : "text-orange-600 dark:text-orange-400"
+              }`}
+            >
+              {project.status === "active" ? "Available" : project.status}
+            </span>
+            <p className="text-sm text-black dark:text-gray-300">
+              {project.capacity || project.price || `${project.supply} tokens`}
+            </p>
+          </div>
+        </div>
+        {project.impact && (
+          <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+            {project.impact}
+          </p>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
 
 export default function ProjectCards() {
-  const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const modalData = {
-    id: 1,
-    title: "Finca Oso Perezoso",
-    location: "Turrialba, Cartago",
-    rating: 4.9,
-    mainImage: "/projects/modal/waterfall-main.jpg",
-    thumbnails: [
-      "/projects/modal/waterfall-main.jpg",
-      "/projects/modal/forest-ferns-1.jpg",
-      "/projects/modal/rocks-stream-1.jpg",
-      "/projects/modal/forest-ferns-2.jpg",
-    ],
-    capacity: "800/1500",
-    remaining: "700 remaining",
-    annualImpact: "21.6 tons CO2/year",
-    about:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    mission:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.",
-    species: ["Peró", "Madero negro", "Guarumo", "Ojoche"],
-    activities: ["Bird watching", "Planting", "Hiking", "Rural lodging"],
-  };
+  // Fetch projects using React Query
+  const { 
+    data: projects = [], 
+    isLoading, 
+    error, 
+    refetch 
+  } = useProjects();
 
-  const handleCardClick = () => {
-    setSelectedProject(modalData);
+  // Fetch selected project details
+  const { data: selectedProject } = useProject(selectedProjectId || '');
+
+  // Mutation for toggling favorites
+  const toggleFavorite = useToggleProjectFavorite();
+
+  const handleCardClick = (projectId: string) => {
+    setSelectedProjectId(projectId);
     setIsModalOpen(true);
   };
+
+  const handleFavoriteToggle = (projectId: string) => {
+    toggleFavorite.mutate(projectId);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedProjectId(null);
+  };
+
+  // Show loading state
+  if (isLoading) {
+    return (
+      <section className="bg-gray-50 dark:bg-gray-800 px-6 py-16 md:px-12 lg:px-16">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Array.from({ length: 6 }).map((_, index) => (
+              <ProjectCardSkeleton key={index} />
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Show error state
+  if (error) {
+    return (
+      <section className="bg-gray-50 dark:bg-gray-800 px-6 py-16 md:px-12 lg:px-16">
+        <div className="max-w-7xl mx-auto">
+          <ProjectCardsError error={error} refetch={refetch} />
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="bg-gray-50 dark:bg-gray-800 px-6 py-16 md:px-12 lg:px-16">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project) => (
-            <Card
+            <ProjectCard
               key={project.id}
-              className="overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700"
-              onClick={handleCardClick}
-            >
-              <div className="relative w-full">
-                <Image
-                  src={project.image || "/placeholder.svg"}
-                  alt={project.alt}
-                  width={400}
-                  height={300}
-                  className="w-full h-auto object-contain"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-              </div>
-              <CardContent className="p-4">
-                <div className="flex justify-between items-start mb-2">
-                  <div>
-                    <h3 className="font-semibold text-black dark:text-white mb-1">
-                      {project.title}
-                    </h3>
-                    <p className="text-sm text-black dark:text-gray-300">{project.location}</p>
-                  </div>
-                  <div className="text-right">
-                    <span
-                      className={`text-sm font-medium ${
-                        project.status === "Available"
-                          ? "text-black dark:text-white"
-                          : "text-black dark:text-gray-400"
-                      }`}
-                    >
-                      {project.status}
-                    </span>
-                    <p className="text-sm text-black dark:text-gray-300">{project.price}</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+              project={project}
+              onCardClick={() => handleCardClick(project.id)}
+              onFavoriteToggle={() => handleFavoriteToggle(project.id)}
+            />
           ))}
         </div>
+        
         {selectedProject && (
           <ProjectModal
             isOpen={isModalOpen}
-            onClose={() => setIsModalOpen(false)}
+            onClose={handleCloseModal}
             project={selectedProject}
           />
         )}
