@@ -1,7 +1,8 @@
-import { Keypair, Horizon } from "@stellar/stellar-sdk";
+import { Keypair } from "@stellar/stellar-sdk/lib/keypair";
+import { Server } from "@stellar/stellar-sdk/lib/server";
 import { STELLAR_CONFIG } from "./config";
 
-const server = new Horizon.Server(STELLAR_CONFIG.horizonURL);
+const server = new Server(STELLAR_CONFIG.horizonURL);
 
 export async function testConnection() {
   const keypair = Keypair.random();
