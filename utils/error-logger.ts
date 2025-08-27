@@ -7,9 +7,18 @@ const sentErrors = new Set<string>();
 
 function getUserContext() {
   try {
-    const state = (useGlobalAuthenticationStore as any).getState?.();
-    const address = state?.address as string | undefined;
-    return { address };
+    // Check if we're in a browser environment and the store is available
+    if (typeof window === 'undefined') {
+      return {} as Record<string, unknown>;
+    }
+    
+    const store = useGlobalAuthenticationStore;
+    if (store && typeof store.getState === 'function') {
+      const state = store.getState();
+      const address = state?.address as string | undefined;
+      return { address };
+    }
+    return {} as Record<string, unknown>;
   } catch {
     return {} as Record<string, unknown>;
   }
