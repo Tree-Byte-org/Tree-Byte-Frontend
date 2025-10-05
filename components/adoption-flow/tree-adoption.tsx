@@ -1,23 +1,50 @@
-"use client"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { TreePine, MapPin, Leaf, DollarSign, ArrowRight, Heart, Plus, Minus, Globe, Bird, Users } from "lucide-react"
+import Image from "next/image"
+import { Farm } from "./types"
 
 interface TreeAdoptionProps {
-  farm: any
+  farm: Farm | undefined
   onComplete: (complete: boolean) => void
   onNext: () => void
 }
 
-export function TreeAdoption({ farm, onComplete, onNext }: TreeAdoptionProps) {
-  const [selectedTree, setSelectedTree] = useState(null)
-  const [quantity, setQuantity] = useState(1)
-  const [adopting, setAdopting] = useState(false)
+type Tree = {
+    id: number;
+    species: string;
+    age: string;
+    location: string;
+    co2Potential: string;
+    price: number;
+    image: string;
+    characteristics: string[];
+    available: number;
+    environmentalImpact: {
+        soilImprovement: string;
+        waterCycle: string;
+        airQuality: string;
+    };
+    biodiversitySupport: {
+        wildlife: string;
+        pollinators: string;
+        ecosystem: string;
+    };
+    communityBenefits: {
+        employment: string;
+        education: string;
+        economy: string;
+    };
+}
 
-  const availableTrees = [
+export function TreeAdoption({ farm, onComplete, onNext }: TreeAdoptionProps) {
+  const [selectedTree, setSelectedTree] = useState<Tree>()
+  const [quantity, setQuantity] = useState<number>(1)
+  const [adopting, setAdopting] = useState<boolean>(false)
+
+  const availableTrees: Tree[] = [
     {
       id: 1,
       species: "Guanacaste",
@@ -121,7 +148,7 @@ export function TreeAdoption({ farm, onComplete, onNext }: TreeAdoptionProps) {
     }
   }
 
-  const handleTreeSelect = (tree) => {
+  const handleTreeSelect = (tree: Tree) => {
     setSelectedTree(tree)
     setQuantity(1) // Reset quantity when selecting a new tree
   }
@@ -152,7 +179,7 @@ export function TreeAdoption({ farm, onComplete, onNext }: TreeAdoptionProps) {
       <Card className="mb-8 border-green-200">
         <CardContent className="p-6">
           <div className="flex items-center space-x-4">
-            <img src={farm.image || "/placeholder.svg"} alt={farm.name} className="w-20 h-20 rounded-lg object-cover" />
+            <Image src={farm.image || "/placeholder.svg"} alt={farm.name} className="w-20 h-20 rounded-lg object-cover" width={80} height={80} />
             <div>
               <h3 className="text-xl font-semibold text-gray-900">{farm.name}</h3>
               <p className="text-gray-600 flex items-center">
@@ -177,7 +204,7 @@ export function TreeAdoption({ farm, onComplete, onNext }: TreeAdoptionProps) {
           >
             <CardHeader className="p-0">
               <div className="relative">
-                <img
+                <Image
                   src={tree.image || "/placeholder.svg"}
                   alt={tree.species}
                   className="w-full h-40 object-cover rounded-t-lg"

@@ -15,6 +15,8 @@ import { WalletConnection } from "@/components/adoption-flow/wallet-connection";
 import { TreeAdoption } from "@/components/adoption-flow/tree-adoption";
 import { NFTPreview } from "@/components/adoption-flow/nft-preview";
 import { ImpactDashboard } from "@/components/adoption-flow/impact-dashboard";
+import Link from "next/link";
+import { Farm } from "./types";
 
 const steps = [
   {
@@ -51,7 +53,7 @@ const steps = [
 
 export function AdoptionFlow() {
   const [currentStep, setCurrentStep] = useState(1);
-  const [selectedFarm, setSelectedFarm] = useState(null);
+  const [selectedFarm, setSelectedFarm] = useState<Farm>();
   const [walletConnected, setWalletConnected] = useState(false);
   const [adoptionComplete, setAdoptionComplete] = useState(false);
 
@@ -107,17 +109,17 @@ export function AdoptionFlow() {
       {/* Header */}
       <div className="text-center mb-12">
         <Button variant="ghost" className="mb-6" asChild>
-          <a href="/" className="flex items-center">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to home
-          </a>
+            <Link href={'/'} className="flex items-center">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to home
+            </Link>
         </Button>
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
           🌳 How to adopt your tree on TreeByte?
         </h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
           Adopting a tree and becoming part of the regenerative movement is very
-          easy. Here's how to do it step by step:
+          easy. Here&apos;s how to do it step by step:
         </p>
       </div>
 

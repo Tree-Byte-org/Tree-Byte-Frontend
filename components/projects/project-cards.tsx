@@ -68,7 +68,7 @@ function ProjectCard({
     >
       <div className="relative w-full">
         <Image
-          src={project.imageUrl || project.image || "/placeholder.svg"}
+          src={project.imageUrl || "/placeholder.svg"}
           alt={project.name || project.title || "Project image"}
           width={400}
           height={300}
@@ -102,7 +102,7 @@ function ProjectCard({
           <div className="text-right">
             <span
               className={`text-sm font-medium ${
-                project.status === "Available" || project.status === "active"
+                project.status === "active"
                   ? "text-green-600 dark:text-green-400"
                   : "text-orange-600 dark:text-orange-400"
               }`}
@@ -110,7 +110,7 @@ function ProjectCard({
               {project.status === "active" ? "Available" : project.status}
             </span>
             <p className="text-sm text-black dark:text-gray-300">
-              {project.capacity || project.price || `${project.supply} tokens`}
+              {project.capacity|| `${project.supply} tokens`}
             </p>
           </div>
         </div>

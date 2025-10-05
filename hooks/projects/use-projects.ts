@@ -1,11 +1,11 @@
 'use client'
 
 import { useQuery } from '@tanstack/react-query'
-import type { Project } from '@/types/project'
 import type { ProjectFilters } from '@/lib/query/query-keys'
 import { queryKeys } from '@/lib/query/query-keys'
-import { projectsApi, type EnhancedProject } from '@/services/api/projects-api'
+import { projectsApi } from '@/services/api/projects-api'
 import { projectQueryOptions } from '@/lib/query/query-config'
+
 
 /**
  * Hook for fetching projects with React Query
@@ -66,4 +66,3 @@ export function useProjectsLegacy() {
     refetch: () => {}, // This will be handled by React Query automatically
   }
 }
-

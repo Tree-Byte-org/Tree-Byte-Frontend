@@ -31,6 +31,7 @@ interface ApiResponse<T> {
 
 // Enhanced Project type with additional fields for better UX
 export interface EnhancedProject extends Project {
+  title: string;
   isFavorite?: boolean;
   userParticipation?: number;
   lastUpdated?: string;

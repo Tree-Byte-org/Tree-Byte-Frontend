@@ -18,10 +18,10 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['@radix-ui/react-*', 'lucide-react', 'recharts']
   },
-  webpack: (config) => {
+ /*  webpack: (config) => {
     config.optimization.splitChunks.chunks = 'all';
     return config;
-  }
+  } */
 }
 
 export default withBundleAnalyzer(nextConfig)

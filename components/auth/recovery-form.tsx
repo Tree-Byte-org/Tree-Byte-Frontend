@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useRecovery } from '@/hooks/auth/use-recovery'
 import { Input } from '@/components/ui/input'
@@ -6,6 +6,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 import { ShieldCheck, RefreshCw } from 'lucide-react'
 import { useState } from 'react'
+import Image from 'next/image'
 
 export default function RecoveryForm() {
   const {
@@ -34,7 +35,7 @@ export default function RecoveryForm() {
         <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl border border-emerald-100 p-8 space-y-8">
           <div className="text-center space-y-4">
             <div className="flex justify-center mb-4">
-              <img src="/icons/logo-treebyte.svg" alt="TreeByte Logo" className="w-20 h-20" />
+              <Image src="/icons/logo-treebyte.svg" alt="TreeByte Logo" width={80} height={80} className="w-20 h-20" />
             </div>
 
             <div className="space-y-2">
@@ -75,7 +76,7 @@ export default function RecoveryForm() {
               <div className="flex items-start gap-2 text-xs text-yellow-700 bg-yellow-100 p-3 rounded-lg border border-yellow-200">
                 <ShieldCheck className="w-4 h-4 mt-[2px]" />
                 <span>
-                  This passphrase was used to encrypt your wallet. It's required to unlock your access.{' '}
+                  This passphrase was used to encrypt your wallet. It&apos;s required to unlock your access.{' '}
                   <strong>Keep it safe</strong> and never share it.
                 </span>
               </div>
