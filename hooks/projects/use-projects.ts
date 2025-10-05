@@ -1,34 +1,68 @@
-import {useEffect, useState} from 'react'
-import type { Project } from '@/types/project'
+'use client'
 
-export function useProjects() {
-  const [projects, setProjects] = useState<Project[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<Error | null>(null)
+import { useQuery } from '@tanstack/react-query'
+import type { ProjectFilters } from '@/lib/query/query-keys'
+import { queryKeys } from '@/lib/query/query-keys'
+import { projectsApi } from '@/services/api/projects-api'
+import { projectQueryOptions } from '@/lib/query/query-config'
 
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`)
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`)
-        }
-        const data = await res.json()
-        setProjects(data)
-      } catch (err: any) {
-        setError(err)
-      } finally {
-        setLoading(false)
-      }
-    }
 
-    fetchProjects()
-  }, [])
+/**
+ * Hook for fetching projects with React Query
+ * Provides caching, background updates, and error handling
+ */
+export function useProjects(filters?: ProjectFilters) {
+  return useQuery({
+    queryKey: queryKeys.projects.list(filters),
+    queryFn: () => projectsApi.getProjects(filters),
+    ...projectQueryOptions,
+  })
+}
 
+/**
+ * Hook for fetching a single project by ID
+ */
+export function useProject(id: string) {
+  return useQuery({
+    queryKey: queryKeys.projects.detail(id),
+    queryFn: () => projectsApi.getProject(id),
+    enabled: !!id, // Only run query if id is provided
+    ...projectQueryOptions,
+  })
+}
+
+/**
+ * Hook for fetching user's favorite projects
+ */
+export function useFavoriteProjects() {
+  return useQuery({
+    queryKey: queryKeys.projects.favorites(),
+    queryFn: () => projectsApi.getFavoriteProjects(),
+    ...projectQueryOptions,
+  })
+}
+
+/**
+ * Hook for fetching user participation in projects
+ */
+export function useUserProjectParticipation(userId?: string) {
+  return useQuery({
+    queryKey: queryKeys.projects.userParticipation(userId),
+    queryFn: () => projectsApi.getUserProjectParticipation(userId),
+    enabled: !!userId, // Only run query if userId is provided
+    ...projectQueryOptions,
+  })
+}
+
+// Legacy hook for backward compatibility
+// This maintains the same interface as the original hook
+export function useProjectsLegacy() {
+  const { data: projects, isLoading: loading, error } = useProjects()
+  
   return {
-    projects,
+    projects: projects || [],
     loading,
     error,
-    refetch: () => {},
+    refetch: () => {}, // This will be handled by React Query automatically
   }
 }

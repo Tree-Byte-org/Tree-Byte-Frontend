@@ -1,7 +1,8 @@
-import { Keypair, Horizon } from "@stellar/stellar-sdk";
+import { Keypair } from "@stellar/stellar-sdk";
+import { Server } from "@stellar/stellar-sdk/rpc";
 import { STELLAR_CONFIG } from "./config";
 
-const server = new Horizon.Server(STELLAR_CONFIG.horizonURL);
+const server = new Server(STELLAR_CONFIG.horizonURL);
 
 export async function testConnection() {
   const keypair = Keypair.random();
@@ -26,15 +27,15 @@ export async function testConnection() {
     }
 
     console.log("📡 Querying account on the network...");
-    const account = await server.accounts().accountId(publicKey).call();
+    const account = await server.getAccount(publicKey);
 
     console.log("✅ Account found on Horizon");
-    console.log("💰 Balances:", account.balances);
+    // console.log("💰 Balances:", account.balances);
 
     return {
       publicKey,
       secretKey,
-      balances: account.balances,
+      // balances: account.balances,
     };
   } catch (err) {
     console.error("❌ Connection error:", err);

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { createWallet } from '@/services/wallet.service'
+import { useErrorHandler } from '@/hooks/use-error-handler'
 import { useGoogleLogin } from '@react-oauth/google'
 
 export const useRegisterForm = () => {
@@ -8,6 +9,7 @@ export const useRegisterForm = () => {
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
   const [googleStep, setGoogleStep] = useState(false)
+  const { handleError } = useErrorHandler()
 
   const handleEmailChange = (value: string) => {
     setEmail(value)
@@ -24,12 +26,18 @@ export const useRegisterForm = () => {
 
   const submitInvisibleWallet = async () => {
     if (!validateEmail(email)) {
-      setError('Invalid email address')
+      handleError(new Error('Invalid email address'), { 
+        context: { feature: 'register', validation: 'email' }, 
+        toast: true 
+      })
       return
     }
 
     if (!validatePassphrase(passphrase)) {
-      setError('Passphrase must be at least 8 characters long')
+      handleError(new Error('Passphrase must be at least 8 characters long'), { 
+        context: { feature: 'register', validation: 'passphrase' }, 
+        toast: true 
+      })
       return
     }
 
@@ -38,8 +46,9 @@ export const useRegisterForm = () => {
       const result = await createWallet(email, passphrase)
       console.log('Wallet created:', result)
       // TODO: redirect or feedback
-    } catch (err: any) {
-      setError(err.message)
+    } catch (err: unknown) {
+      const appError = handleError(err, { context: { feature: 'register', email }, toast: true })
+      setError(appError.message)
     } finally {
       setLoading(false)
     }
