@@ -113,10 +113,16 @@ export function useTokenPurchase() {
     }
   };
 
+  const connectAndRefresh = async () => {
+    await handleConnect();
+    const { address } = await kit.getAddress();
+    if (address) setPublicKey(address);
+  };
+
   return {
     publicKey,
     loading,
-    handleConnect,
+    handleConnect: connectAndRefresh,
     handlePurchase,
   };
 }

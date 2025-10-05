@@ -15,6 +15,7 @@ export default function ProjectMapSection() {
                 src="/map/map-region.png"
                 alt="Project Map"
                 className="w-full max-w-md object-cover"
+                width={80} height={80}
               />
             </div>
 

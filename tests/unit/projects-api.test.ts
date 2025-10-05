@@ -16,6 +16,7 @@ describe('Projects API', () => {
         {
           id: '1',
           name: 'Test Project',
+          title: 'test',
           description: 'Test Description',
           location: 'Test Location',
           imageUrl: 'test.jpg',
@@ -45,7 +46,7 @@ describe('Projects API', () => {
 
     it('should fetch projects with filters', async () => {
       const filters: ProjectFilters = { status: 'active', location: 'Costa Rica' }
-      const mockProjects = []
+      const mockProjects: never[] = []
 
       ;(fetch as any).mockResolvedValueOnce({
         ok: true,
@@ -133,7 +134,7 @@ describe('Projects API', () => {
 
   describe('getFavoriteProjects', () => {
     it('should fetch favorite projects successfully', async () => {
-      const mockFavorites = []
+      const mockFavorites: any[] = []
 
       ;(fetch as any).mockResolvedValueOnce({
         ok: true,
@@ -181,7 +182,7 @@ describe('Projects API', () => {
 
   describe('getUserProjectParticipation', () => {
     it('should fetch user participation with userId', async () => {
-      const mockParticipation = []
+      const mockParticipation: never[] = []
 
       ;(fetch as any).mockResolvedValueOnce({
         ok: true,
@@ -197,7 +198,7 @@ describe('Projects API', () => {
     })
 
     it('should fetch user participation without userId', async () => {
-      const mockParticipation = []
+      const mockParticipation: never[] = []
 
       ;(fetch as any).mockResolvedValueOnce({
         ok: true,

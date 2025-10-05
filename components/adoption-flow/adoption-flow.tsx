@@ -109,12 +109,10 @@ export function AdoptionFlow() {
       {/* Header */}
       <div className="text-center mb-12">
         <Button variant="ghost" className="mb-6" asChild>
-          <div className="flex items-center">
-            <Link href={'/'}>
+            <Link href={'/'} className="flex items-center">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to home
             </Link>
-          </div>
         </Button>
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
           🌳 How to adopt your tree on TreeByte?

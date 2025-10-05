@@ -179,7 +179,7 @@ export function TreeAdoption({ farm, onComplete, onNext }: TreeAdoptionProps) {
       <Card className="mb-8 border-green-200">
         <CardContent className="p-6">
           <div className="flex items-center space-x-4">
-            <Image src={farm.image || "/placeholder.svg"} alt={farm.name} className="w-20 h-20 rounded-lg object-cover" />
+            <Image src={farm.image || "/placeholder.svg"} alt={farm.name} className="w-20 h-20 rounded-lg object-cover" width={80} height={80} />
             <div>
               <h3 className="text-xl font-semibold text-gray-900">{farm.name}</h3>
               <p className="text-gray-600 flex items-center">
