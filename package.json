@@ -9,6 +9,7 @@
     "lint": "next lint",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:e2e:purchase-ui": "vitest run tests/integration/project-token-purchase-ui.test.tsx",
     "analyze": "ANALYZE=true pnpm run build",
     "analyze:server": "ANALYZE=true pnpm run build && pnpm run start",
     "audit:deps": "depcheck",
@@ -74,6 +75,7 @@
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^15.5.0",
+    "@testing-library/dom": "^10.4.2",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.1",
     "@types/node": "^22",
@@ -88,4 +90,3 @@
     "vitest": "^2.1.4"
   }
 }
-

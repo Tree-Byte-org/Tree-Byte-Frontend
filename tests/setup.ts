@@ -1,4 +1,8 @@
 import '@testing-library/jest-dom/vitest'
+import React from 'react'
+
+// Set global React for JSX transform in test environment
+;(globalThis as any).React = React
 
 // Polyfills minimal for Next.js environment in tests
 Object.defineProperty(window, 'matchMedia', {
@@ -14,5 +18,3 @@ Object.defineProperty(window, 'matchMedia', {
     dispatchEvent: () => false,
   }),
 })
-
-
