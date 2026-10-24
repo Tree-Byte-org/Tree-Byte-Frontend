@@ -12,10 +12,12 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Image from "next/image";
-import { MapPin, Star, Users, Leaf, Heart, RefreshCw } from "lucide-react";
+import { MapPin, Star, Users, Leaf, Heart, RefreshCw, Wallet, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 import { useProject } from "@/hooks/projects/use-projects";
 import { useToggleProjectFavorite, useParticipateInProject } from "@/hooks/projects/use-project-mutations";
+import { useGlobalAuthenticationStore } from "@/data";
+import { useWallet } from "@/hooks/use-wallet.hook";
 import type { EnhancedProject } from "@/services/api/projects-api";
 
 interface ProjectModalProps {
@@ -64,6 +66,11 @@ export default function ProjectModal({
   project,
 }: ProjectModalProps) {
   const [participationAmount, setParticipationAmount] = useState<number>(1);
+
+  // Authentication & Wallet state
+  const address = useGlobalAuthenticationStore((state) => state.address);
+  const { handleConnect } = useWallet();
+  const isWalletConnected = Boolean(address && address.trim().length > 0);
   
   // Fetch detailed project data using React Query
   const { 
@@ -85,6 +92,10 @@ export default function ProjectModal({
   };
 
   const handleParticipate = () => {
+    if (!isWalletConnected) {
+      handleConnect();
+      return;
+    }
     if (participationAmount > 0) {
       participateInProject.mutate({
         projectId: project.id,
@@ -249,7 +260,39 @@ export default function ProjectModal({
 
             {/* Participation Section */}
             <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
-              <h3 className="font-semibold text-black dark:text-white mb-4">Participate in this Project</h3>
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-semibold text-black dark:text-white">Participate in this Project</h3>
+                {isWalletConnected ? (
+                  <span className="flex items-center gap-1.5 text-xs text-green-700 dark:text-green-400 bg-green-50 dark:bg-green-950/40 px-2.5 py-1 rounded-full border border-green-200 dark:border-green-800 font-mono">
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                    {address.slice(0, 6)}...{address.slice(-4)}
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-1.5 text-xs text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40 px-2.5 py-1 rounded-full border border-amber-200 dark:border-amber-800">
+                    <Wallet className="w-3.5 h-3.5" />
+                    Wallet Not Connected
+                  </span>
+                )}
+              </div>
+
+              {!isWalletConnected ? (
+                <Alert className="mb-4 border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/30 text-amber-900 dark:text-amber-200">
+                  <Wallet className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0" />
+                  <AlertDescription className="flex items-center justify-between text-xs w-full gap-2">
+                    <span>You must connect your wallet before you can purchase tokens.</span>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={handleConnect}
+                      className="h-7 text-xs bg-white dark:bg-gray-800 border-amber-300 dark:border-amber-700 hover:bg-amber-100 dark:hover:bg-amber-900/40 flex items-center gap-1 shrink-0"
+                    >
+                      <Wallet className="w-3.5 h-3.5" />
+                      Connect Wallet
+                    </Button>
+                  </AlertDescription>
+                </Alert>
+              ) : null}
+
               <div className="flex gap-4 items-end">
                 <div className="flex-1">
                   <Label htmlFor="participation-amount">Amount (tokens)</Label>
@@ -257,28 +300,40 @@ export default function ProjectModal({
                     id="participation-amount"
                     type="number"
                     min="1"
+                    disabled={!isWalletConnected}
                     value={participationAmount}
                     onChange={(e) => setParticipationAmount(Number(e.target.value))}
                     className="mt-1"
+                    placeholder={isWalletConnected ? "Enter token amount" : "Connect wallet first"}
                   />
                 </div>
-                <Button
-                  onClick={handleParticipate}
-                  disabled={participateInProject.isPending || participationAmount <= 0}
-                  className="flex items-center gap-2"
-                >
-                  {participateInProject.isPending ? (
-                    <>
-                      <RefreshCw className="w-4 h-4 animate-spin" />
-                      Participating...
-                    </>
-                  ) : (
-                    <>
-                      <Leaf className="w-4 h-4" />
-                      Participate
-                    </>
-                  )}
-                </Button>
+                {!isWalletConnected ? (
+                  <Button
+                    onClick={handleConnect}
+                    className="flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-white"
+                  >
+                    <Wallet className="w-4 h-4" />
+                    Connect Wallet
+                  </Button>
+                ) : (
+                  <Button
+                    onClick={handleParticipate}
+                    disabled={participateInProject.isPending || participationAmount <= 0}
+                    className="flex items-center gap-2"
+                  >
+                    {participateInProject.isPending ? (
+                      <>
+                        <RefreshCw className="w-4 h-4 animate-spin" />
+                        Participating...
+                      </>
+                    ) : (
+                      <>
+                        <Leaf className="w-4 h-4" />
+                        Participate
+                      </>
+                    )}
+                  </Button>
+                )}
               </div>
             </div>
           </>
