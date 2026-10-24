@@ -18,6 +18,7 @@ import { CouponStatus } from "@/types/coupon";
 import { statusStyles } from "@/shared/status";
 import CouponQRGenerator from "@/components/coupons/coupon-qr-generator";
 import CouponRedemptionFeedback from "@/components/coupons/coupon-redemption-feedback";
+import CouponDetailsModal from "@/components/coupons/coupon-details-modal";
 
 interface Props {
   coupon: Coupon;
@@ -26,10 +27,11 @@ interface Props {
 
 /**
  * Interactive card component for displaying and redeeming coupons.
- * Handles the entire redemption flow including QR generation and feedback.
+ * Handles the entire redemption flow including QR generation, feedback,
+ * and comprehensive IPFS details modal.
  */
 export function CouponCard({ coupon, onRedemption }: Props) {
-  const [expanded, setExpanded] = useState(false);
+  const [showDetailsModal, setShowDetailsModal] = useState(false);
   const [showQR, setShowQR] = useState(false);
   const [redemptionResult, setRedemptionResult] =
     useState<RedemptionResult | null>(null);
@@ -39,7 +41,8 @@ export function CouponCard({ coupon, onRedemption }: Props) {
   const styles = statusStyles(coupon.status);
   const isDisabled = coupon.status !== CouponStatus.Active;
 
-  const handleRedemption = async () => {
+  const handleRedemption = async (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
     if (!onRedemption || isDisabled) return;
 
     try {
@@ -60,9 +63,8 @@ export function CouponCard({ coupon, onRedemption }: Props) {
   return (
     <>
       <Card
-        className={`overflow-hidden hover:shadow-lg transition-shadow duration-200 ${
-          isDisabled ? "cursor-not-allowed" : "cursor-pointer"
-        } bg-white dark:bg-black border-gray-200 dark:border-gray-700 ${
+        onClick={() => setShowDetailsModal(true)}
+        className={`overflow-hidden hover:shadow-lg transition-shadow duration-200 cursor-pointer bg-white dark:bg-black border-gray-200 dark:border-gray-700 ${
           styles.card
         }`}
       >
@@ -83,7 +85,7 @@ export function CouponCard({ coupon, onRedemption }: Props) {
               <CardTitle className="text-base font-semibold text-gray-900 dark:text-white">
                 {coupon.businessName}
               </CardTitle>
-              <p className="text-xs text-gray-600 dark:text-gray-300 mt-1">
+              <p className="text-xs text-gray-600 dark:text-gray-300 mt-1 line-clamp-2">
                 {coupon.description}
               </p>
             </div>
@@ -98,27 +100,6 @@ export function CouponCard({ coupon, onRedemption }: Props) {
               Expires: {new Date(coupon.expirationDate).toLocaleDateString()}
             </span>
           </div>
-
-          {expanded && (
-            <div className="mt-3 text-sm text-gray-700 dark:text-gray-200 space-y-1">
-              {coupon.redemptionCode && (
-                <p className="font-medium">Code: {coupon.redemptionCode}</p>
-              )}
-              <p>
-                Acquired:{" "}
-                {new Date(coupon.acquisitionDate).toLocaleDateString()}
-              </p>
-              <p>
-                Status: <span className="font-medium">{coupon.status}</span>
-              </p>
-              {coupon.redemptionDate && (
-                <p>
-                  Redeemed:{" "}
-                  {new Date(coupon.redemptionDate).toLocaleDateString()}
-                </p>
-              )}
-            </div>
-          )}
         </CardContent>
 
         <CardFooter className="px-4 pb-4 pt-0">
@@ -126,17 +107,22 @@ export function CouponCard({ coupon, onRedemption }: Props) {
             <Button
               size="sm"
               variant="outline"
-              onClick={() => setExpanded((v) => !v)}
-              disabled={isDisabled}
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowDetailsModal(true);
+              }}
             >
-              {expanded ? "Hide details" : "View details"}
+              View details
             </Button>
 
             <div className="flex gap-2">
               <Button
                 size="sm"
                 variant="outline"
-                onClick={() => setShowQR(true)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowQR(true);
+                }}
                 disabled={isDisabled}
                 className="px-2"
                 aria-label="Show QR code"
@@ -161,6 +147,15 @@ export function CouponCard({ coupon, onRedemption }: Props) {
           </div>
         </CardFooter>
       </Card>
+
+      {/* Comprehensive Details Modal */}
+      <CouponDetailsModal
+        isOpen={showDetailsModal}
+        onClose={() => setShowDetailsModal(false)}
+        coupon={coupon}
+        onRedeem={onRedemption}
+        onShowQR={() => setShowQR(true)}
+      />
 
       <CouponQRGenerator
         isOpen={showQR}

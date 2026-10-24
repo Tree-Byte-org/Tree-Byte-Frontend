@@ -1,3 +1,27 @@
+export interface BusinessContact {
+  email?: string;
+  phone?: string;
+  website?: string;
+}
+
+export interface CouponMetadata {
+  businessName?: string;
+  businessAddress?: string;
+  contact?: BusinessContact;
+  activityType?: ActivityType | string;
+  description?: string;
+  discountPercentage?: number;
+  discountAmount?: number;
+  discountCurrency?: string;
+  validFrom?: string;
+  validUntil?: string;
+  termsAndConditions?: string[];
+  redemptionInstructions?: string;
+  maxGuests?: number;
+  blackoutDates?: string[];
+  imageUrl?: string;
+}
+
 export interface Coupon {
   id: string;
   businessName: string;
@@ -11,6 +35,8 @@ export interface Coupon {
   imageUrl?: string;
   redemptionDate?: string;
   redemptionLocation?: string;
+  ipfsUrl?: string;
+  metadata?: CouponMetadata;
 }
 
 export enum CouponStatus {
